@@ -5,3 +5,4 @@ Welcome to the **Qt Software Projects** repository! This repository contains a c
 
 ## Projects
 1. **Simple Calculator** - 27-08-2024
+2. **Pomodoro Timer by Ameer Salam** - 27-08-2024
