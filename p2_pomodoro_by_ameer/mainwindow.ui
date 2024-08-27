@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>448</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">MainWindow::MainWindow(QWidget *parent)
+    : QMainWindow(parent)
+    , ui(new Ui::MainWindow)
+{
+    ui-&gt;setupUi(this);
+
+    // Set the background color using a stylesheet
+    this-&gt;setStyleSheet(&quot;background-color: lightgray;&quot;); // Set to any color you want
+}
+</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="pomodoro">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>267</width>
+      <height>70</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: #B03060;  /* Pleasantly bright maroon */
+    border-radius: 0px;  /* Rounded corners */
+    border: 2px #8B1C47;  /* Slightly darker maroon for the border */
+    padding: 10px;
+    font-size: 30px;
+    font-family: 'Arial Rounded MT Bold', 'Helvetica Rounded', sans-serif;  /* Rounded corner fonts */
+    color: #FFFFFF;  /* White font color for contrast */
+    transition: background-color 0.2s, transform 0.1s;  /* Smooth transition for background color and transform */
+}
+
+QPushButton:hover {
+    background-color: #C04070;  /* Slightly lighter maroon when hovered */
+}
+
+QPushButton:pressed {
+    background-color: #8B1C47;  /* Darker maroon when pressed */
+    transform: translateY(2px);  /* Move button down slightly to simulate pressing */
+}
+
+#pomodoro:checked {
+    border: 2px solid black;  /* Transparent border */
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.3), 2px -2px 4px rgba(0, 0, 0, 0.3), -2px 0 4px rgba(0, 0, 0, 0.3);  /* Shadow effect on top, left, and right */
+}
+
+/* Short Break and Long Break Button Specific Styles */
+#short_break:checked,
+#long_break:checked {
+    border-bottom: 2px solid #76c7c0;  /* Border only at the bottom */
+    box-shadow: none;  /* No shadow effect */
+}
+
+QPushButton:focus {
+    outline: none;  /* Remove focus outline */
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Pomodoro</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="short_break">
+    <property name="geometry">
+     <rect>
+      <x>267</x>
+      <y>0</y>
+      <width>267</width>
+      <height>70</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: #4CAF50;  /* Light green */
+    border-radius: 0px;  /* No rounded corners */
+    border: 2px #4CAF50;  /* Slightly darker green for the border */
+    padding: 10px;
+    font-size: 30px;
+	font-family: 'Arial Rounded MT Bold', 'Helvetica Rounded', sans-serif;  /* Rounded corner fonts */
+    color: #FFFFFF;  /* White font color for contrast */
+    transition: background-color 0.3s ease, transform 0.1s ease;  /* Smooth transitions */
+}
+
+QPushButton:hover {
+    background-color: #7CC576;  /* Darker green for hover */
+}
+
+QPushButton:pressed {
+    background-color: #4A7F4F;  /* Even darker green for pressed state */
+    transform: translateY(2px);  /* Move button down slightly to simulate pressing */
+}
+
+QPushButton:focus {
+    outline: none;  /* Remove focus outline */
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Short Break</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="long_break">
+    <property name="geometry">
+     <rect>
+      <x>534</x>
+      <y>0</y>
+      <width>267</width>
+      <height>70</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: #ADD8E6;  /* Light blue */
+    border-radius: 0px;  /* Rounded corners */
+    border: 2px #ADD8E6;  /* Slightly darker blue for the border */
+    padding: 10px;
+    font-size: 30px;
+	font-family: 'Arial Rounded MT Bold', 'Helvetica Rounded', sans-serif;  /* Rounded corner fonts */
+    color: #FFFFFF;  /* White font color for contrast */
+    transition: background-color 0.3s ease, transform 0.1s ease;  /* Smooth transitions */
+}
+
+QPushButton:hover {
+    background-color: #7EC8E3;  /* Darker blue for hover */
+}
+
+QPushButton:pressed {
+    background-color: #5A9BD5;  /* Even darker blue for pressed state */
+    transform: translateY(2px);  /* Move button down slightly to simulate pressing */
+}
+
+QPushButton:focus {
+    outline: none;  /* Remove focus outline */
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Long Break</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="start">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>340</y>
+      <width>200</width>
+      <height>70</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: white;  /* Pleasantly bright maroon */
+    border-radius: 15px;  /* Rounded corners */
+    border: 2px solid white;  /* Slightly darker maroon for the border */
+    padding: 10px;
+    font-size: 30px;
+	font-family: 'Arial Rounded MT Bold', 'Helvetica Rounded', sans-serif;  /* Rounded corner fonts */
+    color: #FFFFFF;  /* White font color for contrast */
+    transition: background-color 0.2s, transform 0.1s;  /* Smooth transition for background color and transform */
+}
+
+QPushButton:hover {
+    background-color: #C04070;  /* Slightly lighter maroon when hovered */
+}
+
+QPushButton:pressed {
+    background-color: #8B1C47;  /* Darker maroon when pressed */
+    transform: translateY(2px);  /* Move button down slightly to simulate pressing */
+}
+
+QPushButton:focus {
+    outline: none;  /* Remove focus outline */
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Start</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>19</x>
+      <y>83</y>
+      <width>761</width>
+      <height>231</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+    color: #FFFFFF;  /* White font color */
+    font-size: 110px;  /* Extra-large font size */
+    font-weight: bold;  /* Extra-bold font */
+    font-family: 'Arial Rounded MT Bold', 'Helvetica Rounded', sans-serif;  /* Rounded corner fonts */
+    /*background-color: #FFFFFF;  Black background for contrast */
+    border-radius: 15px;  /* Rounded corners for the label */
+    padding: 10px;  /* Padding around the text */
+    qproperty-alignment: 'AlignCenter';  /* Center align the text */
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Get. Set. GO!</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="reset">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>340</y>
+      <width>70</width>
+      <height>70</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: white;  /* Pleasantly bright maroon */
+    border-radius: 15px;  /* Rounded corners */
+    border: 2px solid white;  /* Slightly darker maroon for the border */
+    padding: 10px;
+    font-size: 30px;
+	font-family: 'Arial Rounded MT Bold', 'Helvetica Rounded', sans-serif;  /* Rounded corner fonts */
+    color: #FFFFFF;  /* White font color for contrast */
+    transition: background-color 0.2s, transform 0.1s;  /* Smooth transition for background color and transform */
+}
+
+QPushButton:hover {
+    background-color: #C04070;  /* Slightly lighter maroon when hovered */
+}
+
+QPushButton:pressed {
+    background-color: #8B1C47;  /* Darker maroon when pressed */
+    transform: translateY(2px);  /* Move button down slightly to simulate pressing */
+}
+
+QPushButton:focus {
+    outline: none;  /* Remove focus outline */
+}
+</string>
+    </property>
+    <property name="text">
+     <string>🔁</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
