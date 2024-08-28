@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow {
+    background-color: #121212; /* Dark background color */
+    color: #FFFFFF; /* White text color for readability */
+    border: none; /* No border for the main window */
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QScrollArea" name="scrollArea">
+      <property name="styleSheet">
+       <string notr="true">QScrollArea {
+    background-color: #1E1E1E; /* Darker background for scroll areas */
+    border: 2px ; /* Border matching the theme color */
+    border-radius: 10px; /* Rounded edges */
+    padding: 5px; /* Inner padding for the content */
+    margin: 10px; /* Outer margin */
+    box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0); /* Inward shadow for depth effect */
+}</string>
+      </property>
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="scrollAreaWidgetContents">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>752</width>
+         <height>552</height>
+        </rect>
+       </property>
+       <widget class="QPushButton" name="new_box">
+        <property name="geometry">
+         <rect>
+          <x>290</x>
+          <y>100</y>
+          <width>220</width>
+          <height>50</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">/* Base Style for PushButton */
+QPushButton {
+    background-color: #121212; /* Background color matching the window */
+    color: white; /* Text color with the theme color */
+    border: 2px solid #1E1E1E; /* Slightly lighter border for definition */
+    border-radius: 12px; /* Rounded edges */
+    padding: 10px 20px; /* Padding inside the button */
+    font-size: 16px; /* Font size for button text */
+    font-family: 'Arial', sans-serif; /* Font style */
+    font-weight: bold; /* Bold text */
+    box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.5), inset -3px -3px 6px rgba(50, 50, 50, 0.2); /* Inward shadow for depth effect */
+    transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease; /* Smooth transitions */
+}
+
+/* Hover Effect */
+QPushButton:hover {
+    background-color: #1E1E1E; /* Slightly lighter color on hover */
+    color: #ffffff; /* White text color on hover for better contrast */
+    box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.6), inset -2px -2px 4px rgba(50, 50, 50, 0.3); /* Enhance shadow effect on hover */
+}
+
+/* Pressed Effect */
+QPushButton:pressed {
+    background-color: #0D0D0D; /* Slightly darker color when pressed */
+    color: #f9db62; /* Retain theme color on pressed */
+    box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.8), inset -1px -1px 2px rgba(50, 50, 50, 0.1); /* Deep inset shadow to give pressed-in effect */
+    transform: translateY(1px); /* Slight downward shift to give pressed effect */
+}
+
+/* Focus Effect */
+QPushButton:focus {
+    outline: none; /* Remove default focus outline */
+    border: 2px solid #f9db62; /* Border with the theme color when focused */
+}
+</string>
+        </property>
+        <property name="text">
+         <string>Create new Time Box</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="previous_box">
+        <property name="geometry">
+         <rect>
+          <x>290</x>
+          <y>160</y>
+          <width>220</width>
+          <height>50</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">/* Base Style for PushButton */
+QPushButton {
+    background-color: #121212; /* Background color matching the window */
+    color: white; /* Text color with the theme color */
+    border: 2px solid #1E1E1E; /* Slightly lighter border for definition */
+    border-radius: 12px; /* Rounded edges */
+    padding: 10px 20px; /* Padding inside the button */
+    font-size: 16px; /* Font size for button text */
+    font-family: 'Arial', sans-serif; /* Font style */
+    font-weight: bold; /* Bold text */
+    box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.5), inset -3px -3px 6px rgba(50, 50, 50, 0.2); /* Inward shadow for depth effect */
+    transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease; /* Smooth transitions */
+}
+
+/* Hover Effect */
+QPushButton:hover {
+    background-color: #1E1E1E; /* Slightly lighter color on hover */
+    color: #ffffff; /* White text color on hover for better contrast */
+    box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.6), inset -2px -2px 4px rgba(50, 50, 50, 0.3); /* Enhance shadow effect on hover */
+}
+
+/* Pressed Effect */
+QPushButton:pressed {
+    background-color: #0D0D0D; /* Slightly darker color when pressed */
+    color: #f9db62; /* Retain theme color on pressed */
+    box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.8), inset -1px -1px 2px rgba(50, 50, 50, 0.1); /* Deep inset shadow to give pressed-in effect */
+    transform: translateY(1px); /* Slight downward shift to give pressed effect */
+}
+
+/* Focus Effect */
+QPushButton:focus {
+    outline: none; /* Remove default focus outline */
+    border: 2px solid #f9db62; /* Border with the theme color when focused */
+}
+</string>
+        </property>
+        <property name="text">
+         <string>Previous Tme Boxes</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="abou">
+        <property name="geometry">
+         <rect>
+          <x>290</x>
+          <y>220</y>
+          <width>220</width>
+          <height>50</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">/* Base Style for PushButton */
+QPushButton {
+    background-color: #121212; /* Background color matching the window */
+    color: white; /* Text color with the theme color */
+    border: 2px solid #1E1E1E; /* Slightly lighter border for definition */
+    border-radius: 12px; /* Rounded edges */
+    padding: 10px 20px; /* Padding inside the button */
+    font-size: 16px; /* Font size for button text */
+    font-family: 'Arial', sans-serif; /* Font style */
+    font-weight: bold; /* Bold text */
+    box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.5), inset -3px -3px 6px rgba(50, 50, 50, 0.2); /* Inward shadow for depth effect */
+    transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease; /* Smooth transitions */
+}
+
+/* Hover Effect */
+QPushButton:hover {
+    background-color: #1E1E1E; /* Slightly lighter color on hover */
+    color: #ffffff; /* White text color on hover for better contrast */
+    box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.6), inset -2px -2px 4px rgba(50, 50, 50, 0.3); /* Enhance shadow effect on hover */
+}
+
+/* Pressed Effect */
+QPushButton:pressed {
+    background-color: #0D0D0D; /* Slightly darker color when pressed */
+    color: #f9db62; /* Retain theme color on pressed */
+    box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.8), inset -1px -1px 2px rgba(50, 50, 50, 0.1); /* Deep inset shadow to give pressed-in effect */
+    transform: translateY(1px); /* Slight downward shift to give pressed effect */
+}
+
+/* Focus Effect */
+QPushButton:focus {
+    outline: none; /* Remove default focus outline */
+    border: 2px solid #f9db62; /* Border with the theme color when focused */
+}
+</string>
+        </property>
+        <property name="text">
+         <string>About</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="stoic_thoughts">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>380</y>
+          <width>700</width>
+          <height>91</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">/* Label Style */
+QLabel {
+    font-family: 'Helvetica', sans-serif; /* Use Helvetica font */
+    font-size: 15px; /* Set font size as needed */
+    font-weight: bold; /* Bold font */
+    font-style: italic; /* Italic font */
+    color: #f9db62; /* Theme color */
+    background-color: transparent; /* Transparent background */
+    padding: 10px; /* Padding around the label text */
+    border: none; /* No border */
+    margin: 5px; /* Margin around the label */
+}
+
+/* Optional: Add some shadow or glow to the text */
+QLabel {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Shadow for text to enhance visibility */
+}
+</string>
+        </property>
+        <property name="text">
+         <string>Hi this is Stoic</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="stoic_thoughts_2">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>400</y>
+          <width>160</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">/* Label Style */
+QLabel {
+    font-family: 'Helvetica', sans-serif; /* Use Helvetica font */
+    font-size: 10px; /* Set font size as needed */
+    font-weight: bold; /* Bold font */
+	font-align: left;
+    font-style: italic; /* Italic font */
+    color: white; /* Theme color */
+    background-color: transparent; /* Transparent background */
+    padding: 10px; /* Padding around the label text */
+    border: none; /* No border */
+    margin: 5px; /* Margin around the label */
+}
+
+/* Optional: Add some shadow or glow to the text */
+QLabel {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Shadow for text to enhance visibility */
+}
+</string>
+        </property>
+        <property name="text">
+         <string>Hi this is Stoic</string>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
