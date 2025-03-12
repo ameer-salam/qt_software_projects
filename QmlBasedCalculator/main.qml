@@ -46,8 +46,13 @@ ApplicationWindow {
             //width and heigh
             width: 200
             height: 100
-            onClicked: {
-                calculator.exampleFun();
+            mouseArea.onClicked: {
+                console.log("🟢 Button Clicked! Calling exampleFun()...");
+                        if (calculator) {
+                            console.log(qsTr('Clicked on background. Text: "' + textEdit.text + '"'))
+                        } else {
+                            console.log("🔴 ERROR: calculator is NULL in QML!");
+                        }
             }
         }
         Button{
