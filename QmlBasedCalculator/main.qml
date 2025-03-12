@@ -46,13 +46,11 @@ ApplicationWindow {
             //width and heigh
             width: 200
             height: 100
-            mouseArea.onClicked: {
-                console.log("🟢 Button Clicked! Calling exampleFun()...");
-                        if (calculator) {
-                            console.log(qsTr('Clicked on background. Text: "' + textEdit.text + '"'))
-                        } else {
-                            console.log("🔴 ERROR: calculator is NULL in QML!");
-                        }
+            MouseArea{
+                anchors.fill: parent
+                onClicked: {
+                    calculator.clear();
+                }
             }
         }
         Button{
@@ -66,6 +64,14 @@ ApplicationWindow {
             //width and heigh
             width: 100
             height: 100
+
+            //op
+            MouseArea{
+                anchors.fill: parent
+                onClicked: {
+                    calculator.divide();
+                }
+            }
         }
         Button{
             id:_mul
@@ -78,6 +84,12 @@ ApplicationWindow {
             //Position
             x: 300
             y: 150
+            MouseArea{
+                anchors.fill: parent
+                onClicked: {
+                    calculator.multiply();
+                }
+            }
         }
         Button{
             id:_7
@@ -88,6 +100,12 @@ ApplicationWindow {
 
             x:0
             y:250
+            MouseArea{
+                anchors.fill: parent
+                onClicked: {
+                    calculator.digitPressed(7);
+                }
+            }
         }
         Button{
             id:_8
@@ -98,6 +116,12 @@ ApplicationWindow {
 
             x: 100
             y:250
+            MouseArea{
+                anchors.fill: parent
+                onClicked: {
+                    calculator.digitPressed(8);
+                }
+            }
         }
         Button{
             id:_9
@@ -108,6 +132,12 @@ ApplicationWindow {
 
             x: 200
             y:250
+            MouseArea{
+                anchors.fill: parent
+                onClicked: {
+                    calculator.digitPressed(9);
+                }
+            }
         }
         Button{
             id:_sub
@@ -118,6 +148,12 @@ ApplicationWindow {
 
             x: 300
             y: 250
+            MouseArea{
+                anchors.fill: parent
+                onClicked: {
+                    calculator.subtract();
+                }
+            }
         }
         Button{
             id:_4
@@ -128,6 +164,12 @@ ApplicationWindow {
 
             x:0
             y:350
+            MouseArea{
+                anchors.fill: parent
+                onClicked: {
+                    calculator.digitPressed(4);
+                }
+            }
         }
         Button{
             id:_5
@@ -138,6 +180,12 @@ ApplicationWindow {
 
             x:100
             y:350
+            MouseArea{
+                anchors.fill: parent
+                onClicked: {
+                    calculator.digitPressed(5);
+                }
+            }
         }
         Button{
             id:_6
@@ -148,6 +196,12 @@ ApplicationWindow {
 
             x: 200
             y:350
+            MouseArea{
+                anchors.fill: parent
+                onClicked: {
+                    calculator.digitPressed(6);
+                }
+            }
         }
         Button{
             id:_add
@@ -158,6 +212,13 @@ ApplicationWindow {
 
             x: 300
             y: 350
+
+            MouseArea{
+                anchors.fill: parent
+                onClicked: {
+                    calculator.add();
+                }
+            }
         }
         Button{
             id:_1
@@ -168,6 +229,12 @@ ApplicationWindow {
 
             x:0
             y:450
+            MouseArea{
+                anchors.fill: parent
+                onClicked: {
+                    calculator.digitPressed(1);
+                }
+            }
         }
         Button{
             id:_2
@@ -178,6 +245,12 @@ ApplicationWindow {
 
             x: 100
             y: 450
+            MouseArea{
+                anchors.fill: parent
+                onClicked: {
+                    calculator.digitPressed(2);
+                }
+            }
         }
         Button{
             id:_3
@@ -188,6 +261,12 @@ ApplicationWindow {
 
             x:200
             y:450
+            MouseArea{
+                anchors.fill: parent
+                onClicked: {
+                    calculator.digitPressed(3);
+                }
+            }
         }
         Button{
             id:_0
@@ -198,6 +277,12 @@ ApplicationWindow {
 
             x: 0
             y: 550
+            MouseArea{
+                anchors.fill: parent
+                onClicked: {
+                    calculator.digitPressed(0);
+                }
+            }
         }
         Button{
             id:_dot
