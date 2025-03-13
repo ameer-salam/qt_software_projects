@@ -32,9 +32,11 @@ ApplicationWindow {
             TextField{
                 id:textBox
                 anchors.fill: parent
-                placeholderText: "Example"
+                placeholderText: "Enter Number"
             }
     }
+
+        //clear button
         Button{
             id:_Clear
             text:"Clear"
@@ -53,6 +55,46 @@ ApplicationWindow {
                 }
             }
         }
+
+        //operations buttons
+        //add
+        Button{
+            id:_add
+            text:"+"
+
+            height:100
+            width: 100
+
+            x: 300
+            y: 350
+
+            MouseArea{
+                anchors.fill: parent
+                onClicked: {
+                    calculator.buttonPressed("+");
+                }
+            }
+        }
+
+        //subtract
+        Button{
+            id:_sub
+            text:"-"
+
+            width: 100
+            height: 100
+
+            x: 300
+            y: 250
+            MouseArea{
+                anchors.fill: parent
+                onClicked: {
+                    calculator.buttonPressed("-");
+                }
+            }
+        }
+
+        //divide
         Button{
             id:_div
             text:"/"
@@ -69,10 +111,12 @@ ApplicationWindow {
             MouseArea{
                 anchors.fill: parent
                 onClicked: {
-                    calculator.divide();
+                    calculator.buttonPressed("/");
                 }
             }
         }
+
+        //multiply
         Button{
             id:_mul
             text: "X"
@@ -87,187 +131,33 @@ ApplicationWindow {
             MouseArea{
                 anchors.fill: parent
                 onClicked: {
-                    calculator.multiply();
+                    calculator.buttonPressed("*");
                 }
             }
         }
+
+        //equals
         Button{
-            id:_7
-            text:"7"
+            id:_equals
+            text:"="
 
-            width:100
-            height: 100
-
-            x:0
-            y:250
-            MouseArea{
-                anchors.fill: parent
-                onClicked: {
-                    calculator.digitPressed(7);
-                }
-            }
-        }
-        Button{
-            id:_8
-            text:"8"
-
-            width: 100
-            height: 100
-
-            x: 100
-            y:250
-            MouseArea{
-                anchors.fill: parent
-                onClicked: {
-                    calculator.digitPressed(8);
-                }
-            }
-        }
-        Button{
-            id:_9
-            text:"9"
-
-            width: 100
-            height: 100
-
-            x: 200
-            y:250
-            MouseArea{
-                anchors.fill: parent
-                onClicked: {
-                    calculator.digitPressed(9);
-                }
-            }
-        }
-        Button{
-            id:_sub
-            text:"-"
-
-            width: 100
-            height: 100
-
-            x: 300
-            y: 250
-            MouseArea{
-                anchors.fill: parent
-                onClicked: {
-                    calculator.subtract();
-                }
-            }
-        }
-        Button{
-            id:_4
-            text:"4"
-
-            height: 100
+            height: 200
             width: 100
 
-            x:0
-            y:350
-            MouseArea{
-                anchors.fill: parent
-                onClicked: {
-                    calculator.digitPressed(4);
-                }
-            }
-        }
-        Button{
-            id:_5
-            text:"5"
-
-            height: 100
-            width: 100
-
-            x:100
-            y:350
-            MouseArea{
-                anchors.fill: parent
-                onClicked: {
-                    calculator.digitPressed(5);
-                }
-            }
-        }
-        Button{
-            id:_6
-            text:"6"
-
-            height: 100
-            width: 100
-
-            x: 200
-            y:350
-            MouseArea{
-                anchors.fill: parent
-                onClicked: {
-                    calculator.digitPressed(6);
-                }
-            }
-        }
-        Button{
-            id:_add
-            text:"+"
-
-            height:100
-            width: 100
-
-            x: 300
-            y: 350
-
-            MouseArea{
-                anchors.fill: parent
-                onClicked: {
-                    calculator.add();
-                }
-            }
-        }
-        Button{
-            id:_1
-            text:"1"
-
-            width: 100
-            height: 100
-
-            x:0
+            x:300
             y:450
             MouseArea{
                 anchors.fill: parent
                 onClicked: {
-                    calculator.digitPressed(1);
+                    calculator.buttonPressed("=");
                 }
             }
         }
-        Button{
-            id:_2
-            text:"2"
 
-            width: 100
-            height: 100
 
-            x: 100
-            y: 450
-            MouseArea{
-                anchors.fill: parent
-                onClicked: {
-                    calculator.digitPressed(2);
-                }
-            }
-        }
-        Button{
-            id:_3
-            text:"3"
 
-            height: 100
-            width: 100
-
-            x:200
-            y:450
-            MouseArea{
-                anchors.fill: parent
-                onClicked: {
-                    calculator.digitPressed(3);
-                }
-            }
-        }
+        //Numbers
+        //zero
         Button{
             id:_0
             text:"0"
@@ -280,10 +170,176 @@ ApplicationWindow {
             MouseArea{
                 anchors.fill: parent
                 onClicked: {
-                    calculator.digitPressed(0);
+                    calculator.buttonPressed("0");
                 }
             }
         }
+
+        //one
+        Button{
+            id:_1
+            text:"1"
+
+            width: 100
+            height: 100
+
+            x:0
+            y:450
+            MouseArea{
+                anchors.fill: parent
+                onClicked: {
+                    calculator.buttonPressed("1");
+                }
+            }
+        }
+
+        //two
+        Button{
+            id:_2
+            text:"2"
+
+            width: 100
+            height: 100
+
+            x: 100
+            y: 450
+            MouseArea{
+                anchors.fill: parent
+                onClicked: {
+                    calculator.buttonPressed("2");
+                }
+            }
+        }
+
+        //three
+        Button{
+            id:_3
+            text:"3"
+
+            height: 100
+            width: 100
+
+            x:200
+            y:450
+            MouseArea{
+                anchors.fill: parent
+                onClicked: {
+                    calculator.buttonPressed("3");
+                }
+            }
+        }
+
+        //four
+        Button{
+            id:_4
+            text:"4"
+
+            height: 100
+            width: 100
+
+            x:0
+            y:350
+            MouseArea{
+                anchors.fill: parent
+                onClicked: {
+                    calculator.buttonPressed("4");
+                }
+            }
+        }
+
+        //five
+        Button{
+            id:_5
+            text:"5"
+
+            height: 100
+            width: 100
+
+            x:100
+            y:350
+            MouseArea{
+                anchors.fill: parent
+                onClicked: {
+                    calculator.buttonPressed("5");
+                }
+            }
+        }
+
+        //six
+        Button{
+            id:_6
+            text:"6"
+
+            height: 100
+            width: 100
+
+            x: 200
+            y:350
+            MouseArea{
+                anchors.fill: parent
+                onClicked: {
+                    calculator.buttonPressed("6");
+                }
+            }
+        }
+
+        //seven
+        Button{
+            id:_7
+            text:"7"
+
+            width:100
+            height: 100
+
+            x:0
+            y:250
+            MouseArea{
+                anchors.fill: parent
+                onClicked: {
+                    calculator.buttonPressed("7");
+                }
+            }
+        }
+
+        //eight
+        Button{
+            id:_8
+            text:"8"
+
+            width: 100
+            height: 100
+
+            x: 100
+            y:250
+            MouseArea{
+                anchors.fill: parent
+                onClicked: {
+                    calculator.buttonPressed("8");
+                }
+            }
+        }
+
+        //nine
+        Button{
+            id:_9
+            text:"9"
+
+            width: 100
+            height: 100
+
+            x: 200
+            y:250
+            MouseArea{
+                anchors.fill: parent
+                onClicked: {
+                    calculator.buttonPressed('9');
+                }
+            }
+        }
+
+
+        //symbols
+        //dot
         Button{
             id:_dot
             text:"."
@@ -293,7 +349,15 @@ ApplicationWindow {
 
             x:100
             y:550
+            MouseArea{
+                anchors.fill: parent
+                onClicked: {
+                    calculator.buttonPressed(".");
+                }
+            }
         }
+
+        //plus minus
         Button{
             id:_plusMin
             text:"+/-"
@@ -303,16 +367,12 @@ ApplicationWindow {
 
             x:200
             y: 550
-        }
-        Button{
-            id:_equals
-            text:"="
-
-            height: 200
-            width: 100
-
-            x:300
-            y:450
+            MouseArea{
+                anchors.fill: parent
+                onClicked: {
+                    calculator.buttonPressed("S");
+                }
+            }
         }
     //}
 }

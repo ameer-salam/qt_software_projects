@@ -1,51 +1,35 @@
 #include <QObject>
 #include <QDebug>
+#include <QString>
 #include "calculator.h"
+
+QString Inputs;
+long ans;
 
 double a=0, b=0;
 double quo=0, rem=0, sum=0, dif=0, pro=0;
+
+
 calculator::calculator(QObject *parent) : QObject(parent){}
 
-void calculator::digitPressed(double d)
+//function to recieve the button clicked
+void calculator:: buttonPressed(char chIn)
 {
-    if(a==0)
-        a=d;
-    else
-        b=d;
-
-    qDebug()<<"a ="<<a<<"  b = "<<b;
+    qDebug()<<chIn;
+    Inputs.append(chIn);
+    qDebug()<<Inputs;
 }
 
-void calculator::divide()
-{
-    quo=a/b;
-    qDebug()<<quo;
-}
+/*
+ * 1 - add
+ * 2 - subtract
+ * 3 - divide
+ * 4 - multiply
+ * 5 - equals
+ */
 
-void calculator::multiply()
-{
-    pro=a*b;
-    qDebug()<<pro;
-}
 
-void calculator::subtract()
-{
-    dif=a-b;
-     qDebug()<<dif;
-}
-
-void calculator::add()
-{
-    sum=a+b;
-    qDebug()<<sum;
-}
-
-void calculator::equals()
-{
-    qDebug()<<"Equals has to be added";
-}
 
 void calculator::clear()
 {
-    a=b=quo=rem=sum=dif=pro=0;
 }
