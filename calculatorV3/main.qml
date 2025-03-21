@@ -16,6 +16,9 @@ Window {
 
     Calculator{
         id: calculator
+        //displayTextChanged:{
+       //}
+        onDisplayTextChanged: _textBox.text = calculator.displayText;
     }
 
     Column{
@@ -26,7 +29,7 @@ Window {
             id: _textBox
             width: 415
             height: 80
-            text: "0"
+            text: calculator.displayText
             font.pixelSize: 38
             readOnly: true
             horizontalAlignment: Text.AlignRight
@@ -49,15 +52,23 @@ Window {
                     height: 90
                     width: 100
                     onClicked: {
-                        if(text === "+" || text === "/" || text === "-" || text === "-" || text === "*")
-                            //console.log("operation clicked");
-                            calculator.example(text);
+                        if(text === "=")
+                        {
+                            calculator.equalsPressed();
+                        }
                         else if(text === "C")
-                            console.log("clear clicked");
-                        else if(text === "=")
-                            console.log("Equals clicked");
+                            calculator.clearPressed();
                         else
-                            console.log("number clicked");
+                            calculator.buttonPressed(text);
+//                        if(text === "+" || text === "/" || text === "-" || text === "-" || text === "*")
+//                            //console.log("operation clicked");
+//                            calculator.example(text);
+//                        else if(text === "C")
+//                            console.log("clear clicked");
+//                        else if(text === "=")
+//                            console.log("Equals clicked");
+//                        else
+//                            console.log("number clicked");
                     }
                 }
             }
