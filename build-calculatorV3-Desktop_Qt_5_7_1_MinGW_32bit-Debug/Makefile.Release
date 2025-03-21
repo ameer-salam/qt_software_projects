@@ -152,22 +152,6 @@ release/moc_calculator.cpp: C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtCore/QObject 
 		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtCore/qvarlengtharray.h \
 		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtCore/qcontainerfwd.h \
 		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtCore/qobject_impl.h \
-		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtCore/QString \
-		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtCore/QDebug \
-		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtCore/qdebug.h \
-		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtCore/qhash.h \
-		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtCore/qmap.h \
-		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtCore/qtextstream.h \
-		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtCore/qiodevice.h \
-		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtCore/qlocale.h \
-		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtCore/qvariant.h \
-		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtCore/qshareddata.h \
-		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtCore/qvector.h \
-		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtCore/qpoint.h \
-		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtCore/qset.h \
-		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtCore/qcontiguouscache.h \
-		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtCore/qsharedpointer.h \
-		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtCore/qsharedpointer_impl.h \
 		../calculatorV3/calculator.h \
 		C:/Qt/Qt5.7.1/5.7/mingw53_32/bin/moc.exe
 	C:\Qt\Qt5.7.1\5.7\mingw53_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IC:/Qt/Qt5.7.1/5.7/mingw53_32/mkspecs/win32-g++ -I"C:/Users/Ameer/OneDrive - aus.co.in/Documents/Qt_projects/qt_software_projects/qt_software_projects/calculatorV3" -IC:/Qt/Qt5.7.1/5.7/mingw53_32/include -IC:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtQuick -IC:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtGui -IC:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtANGLE -IC:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtQml -IC:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtNetwork -IC:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtCore -I. -IC:/Qt/Qt5.7.1/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IC:/Qt/Qt5.7.1/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IC:/Qt/Qt5.7.1/Tools/mingw530_32/i686-w64-mingw32/include -IC:/Qt/Qt5.7.1/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IC:/Qt/Qt5.7.1/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IC:/Qt/Qt5.7.1/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward ..\calculatorV3\calculator.h -o release\moc_calculator.cpp
@@ -271,10 +255,10 @@ release/main.o: ../calculatorV3/main.cpp C:/Qt/Qt5.7.1/5.7/mingw53_32/include/Qt
 		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtCore/qmetaobject.h \
 		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtQml/qqmlerror.h \
 		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtQml/qqmldebug.h \
+		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtQml/QQmlContext \
+		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtQml/qqmlcontext.h \
 		../calculatorV3/calculator.h \
-		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtCore/QObject \
-		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtCore/QString \
-		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtCore/QDebug
+		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtCore/QObject
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\main.o ..\calculatorV3\main.cpp
 
 release/calculator.o: ../calculatorV3/calculator.cpp ../calculatorV3/calculator.h \
@@ -326,7 +310,6 @@ release/calculator.o: ../calculatorV3/calculator.cpp ../calculatorV3/calculator.
 		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtCore/qvarlengtharray.h \
 		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtCore/qcontainerfwd.h \
 		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtCore/qobject_impl.h \
-		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtCore/QString \
 		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtCore/QDebug \
 		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtCore/qdebug.h \
 		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtCore/qhash.h \

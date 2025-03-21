@@ -5,73 +5,64 @@ import calculator 1.0
 
 Window {
     visible: true
-    title: "Calculator V3"
-    color: "grey"
-
-    //ratio
     minimumHeight: 640
     maximumHeight: 640
-    minimumWidth: 480
-    maximumWidth: 480
+    minimumWidth: 420
+    maximumWidth: 420
+    title: "CalculatorV3 - with String and QProperty"
+    color: "grey"
 
     Calculator{
         id: calculator
-        //displayTextChanged:{
-       //}
-        onDisplayTextChanged: _textBox.text = calculator.displayText;
+        onDisplayTextChanged: _textArea.text = calculator.displayText;
     }
 
+
     Column{
+        id: _column
         spacing: 5
         anchors.centerIn: parent
 
         TextArea{
-            id: _textBox
+            id: _textArea
+            height: 100
             width: 415
-            height: 80
-            text: calculator.displayText
-            font.pixelSize: 38
             readOnly: true
+            text: "0"
+            //text: calculator.displayText
             horizontalAlignment: Text.AlignRight
             verticalAlignment: Text.AlignVCenter
+            font.pixelSize: 48
         }
 
         Grid{
-            spacing: 5
-            columns: 4
             rows: 4
+            columns: 4
+            spacing: 5
 
             Repeater{
-                model:[ "7",    "8",    "9",    "C",
-                        "4",    "5",    "6",    "/",
-                        "1",    "2",    "3",    "+",
-                        "0",    "*",    "-",    "="]
-
+                model: [    "7",    "8",    "9",    "C",
+                            "4",    "5",    "6",    "+",
+                            "1",    "2",    "3",    "-",
+                            "0",    "/",    "*",    "="]
                 Button{
-                    text: modelData
-                    height: 90
+                    text: modelData;
+                    height: 100
                     width: 100
                     onClicked: {
-                        if(text === "=")
-                        {
+                        if(text==="=")
                             calculator.equalsPressed();
-                        }
-                        else if(text === "C")
+                        else if(text==="C")
                             calculator.clearPressed();
                         else
-                            calculator.buttonPressed(text);
-//                        if(text === "+" || text === "/" || text === "-" || text === "-" || text === "*")
-//                            //console.log("operation clicked");
-//                            calculator.example(text);
-//                        else if(text === "C")
-//                            console.log("clear clicked");
-//                        else if(text === "=")
-//                            console.log("Equals clicked");
-//                        else
-//                            console.log("number clicked");
+                            calculator.buttonClicked(text);
                     }
+
                 }
             }
+
         }
+
     }
+
 }

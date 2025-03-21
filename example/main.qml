@@ -3,38 +3,37 @@ import QtQuick.Window 2.2
 import QtQuick.Controls 1.0
 import example 1.0
 
+
 Window {
     visible: true
-
-    minimumHeight: 400
-    maximumHeight: 400
-    minimumWidth: 600
-    maximumWidth: 600
-
+    width: 640
+    height: 480
     title: "Example"
 
     Example{
-        id: _example
+        id: example
     }
 
     Column{
+        spacing: 5
         anchors.centerIn: parent
-        spacing: 10
 
         TextArea{
-            id: _textBox
-            width: 500
+            id: _textArea
             height: 100
-            text : "Hello! the button is clicked : " + _example.count + " Times"
-        }
+            text: example.count;
+            width: 620
+            font.pixelSize: 32
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
 
+        }
         Button{
-            text: "Click here"
+            text: "Click here!"
             height: 100
-            width: 100
+            width: 620
             onClicked: {
-               //_example.exampleFun();
-                _example.increment;
+                example.increment();
             }
         }
     }

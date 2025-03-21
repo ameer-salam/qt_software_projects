@@ -309,22 +309,7 @@ release/example.o: ../example/example.cpp ../example/example.h \
 		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtCore/qmetatype.h \
 		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtCore/qvarlengtharray.h \
 		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtCore/qcontainerfwd.h \
-		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtCore/qobject_impl.h \
-		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtCore/QDebug \
-		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtCore/qdebug.h \
-		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtCore/qhash.h \
-		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtCore/qmap.h \
-		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtCore/qtextstream.h \
-		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtCore/qiodevice.h \
-		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtCore/qlocale.h \
-		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtCore/qvariant.h \
-		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtCore/qshareddata.h \
-		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtCore/qvector.h \
-		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtCore/qpoint.h \
-		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtCore/qset.h \
-		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtCore/qcontiguouscache.h \
-		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtCore/qsharedpointer.h \
-		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtCore/qsharedpointer_impl.h
+		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtCore/qobject_impl.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\example.o ..\example\example.cpp
 
 release/qrc_qml.o: release/qrc_qml.cpp 

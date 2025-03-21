@@ -20,7 +20,7 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_Calculator_t {
     QByteArrayData data[8];
-    char stringdata0[91];
+    char stringdata0[89];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -32,16 +32,16 @@ static const qt_meta_stringdata_Calculator_t qt_meta_stringdata_Calculator = {
 QT_MOC_LITERAL(0, 0, 10), // "Calculator"
 QT_MOC_LITERAL(1, 11, 18), // "displayTextChanged"
 QT_MOC_LITERAL(2, 30, 0), // ""
-QT_MOC_LITERAL(3, 31, 13), // "equalsPressed"
-QT_MOC_LITERAL(4, 45, 12), // "clearPressed"
-QT_MOC_LITERAL(5, 58, 13), // "buttonPressed"
-QT_MOC_LITERAL(6, 72, 6), // "button"
-QT_MOC_LITERAL(7, 79, 11) // "displayText"
+QT_MOC_LITERAL(3, 31, 13), // "buttonClicked"
+QT_MOC_LITERAL(4, 45, 4), // "text"
+QT_MOC_LITERAL(5, 50, 13), // "equalsPressed"
+QT_MOC_LITERAL(6, 64, 12), // "clearPressed"
+QT_MOC_LITERAL(7, 77, 11) // "displayText"
 
     },
     "Calculator\0displayTextChanged\0\0"
-    "equalsPressed\0clearPressed\0buttonPressed\0"
-    "button\0displayText"
+    "buttonClicked\0text\0equalsPressed\0"
+    "clearPressed\0displayText"
 };
 #undef QT_MOC_LITERAL
 
@@ -62,17 +62,17 @@ static const uint qt_meta_data_Calculator[] = {
        1,    0,   34,    2, 0x06 /* Public */,
 
  // methods: name, argc, parameters, tag, flags
-       3,    0,   35,    2, 0x02 /* Public */,
-       4,    0,   36,    2, 0x02 /* Public */,
-       5,    1,   37,    2, 0x02 /* Public */,
+       3,    1,   35,    2, 0x02 /* Public */,
+       5,    0,   38,    2, 0x02 /* Public */,
+       6,    0,   39,    2, 0x02 /* Public */,
 
  // signals: parameters
     QMetaType::Void,
 
  // methods: parameters
+    QMetaType::Void, QMetaType::QChar,    4,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString,    6,
 
  // properties: name, type, flags
        7, QMetaType::QString, 0x00495103,
@@ -90,9 +90,9 @@ void Calculator::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->displayTextChanged(); break;
-        case 1: _t->equalsPressed(); break;
-        case 2: _t->clearPressed(); break;
-        case 3: _t->buttonPressed((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 1: _t->buttonClicked((*reinterpret_cast< QChar(*)>(_a[1]))); break;
+        case 2: _t->equalsPressed(); break;
+        case 3: _t->clearPressed(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {

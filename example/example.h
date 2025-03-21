@@ -10,10 +10,9 @@ class Example : public QObject
 public:
     explicit Example(QObject *parent = nullptr);
 
-    Q_INVOKABLE void exampleFun();
-    Q_INVOKABLE void increment();
     int count();
-    void setCount(int count);
+    Q_INVOKABLE void increment();
+    void setCount(int number);
 
 signals:
     void countChanged();
@@ -21,7 +20,7 @@ signals:
 public slots:
 
 private:
-    int count_changed;
+    int m_count;
 };
 
 #endif // EXAMPLE_H
