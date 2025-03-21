@@ -1,31 +1,32 @@
 #include "example.h"
 #include <QDebug>
 
-Example::Example(QObject *parent) : QObject(parent), m_count(0)
+Example::Example(QObject *parent) : QObject(parent), count_changed(0)
 {
 
 }
 
 void Example::exampleFun()
 {
-    qDebug()<<"Pressed!";
+    qDebug()<<"Clicked!";
 }
 
-void Example::setCount(int count)
+void Example::increment()
 {
-    if(m_count != count)
-    {
-        m_count = count;
-        emit countChanged();
-    }
-}
-
-void Example::incremnet()
-{
-    setCount(m_count+1);
+    count+=1;
+    setCount(count_changed);
 }
 
 int Example::count()
 {
-    return m_count;
+    return count_changed;
+}
+
+Example::setCount(int count)
+{
+    if(count_changed != count)
+    {
+        count_changed = count;
+        emit countChanged();
+    }
 }

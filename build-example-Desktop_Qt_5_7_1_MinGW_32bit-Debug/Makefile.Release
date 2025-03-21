@@ -255,6 +255,8 @@ release/main.o: ../example/main.cpp C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtGui/Q
 		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtCore/qmetaobject.h \
 		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtQml/qqmlerror.h \
 		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtQml/qqmldebug.h \
+		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtQml/QQmlContext \
+		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtQml/qqmlcontext.h \
 		../example/example.h \
 		C:/Qt/Qt5.7.1/5.7/mingw53_32/include/QtCore/QObject
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\main.o ..\example\main.cpp

@@ -7,14 +7,13 @@ class Example : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(int count READ count WRITE setCount NOTIFY countChanged)
-
 public:
     explicit Example(QObject *parent = nullptr);
-    Q_INVOKABLE void exampleFun();
 
+    Q_INVOKABLE void exampleFun();
+    Q_INVOKABLE void increment();
     int count();
-    Q_INVOKABLE void setCount(int count);
-    Q_INVOKABLE void incremnet();
+    void setCount(int count);
 
 signals:
     void countChanged();
@@ -22,7 +21,7 @@ signals:
 public slots:
 
 private:
-    int m_count;
+    int count_changed;
 };
 
 #endif // EXAMPLE_H
