@@ -14,7 +14,9 @@ Window {
 
     Calculator{
         id: calculator
-        onDisplayTextChanged: _textArea.text = calculator.displayText;
+        onDisplayTextChanged: {
+            _textArea.text = calculator.displayText;
+        }
     }
 
 
@@ -28,7 +30,7 @@ Window {
             height: 100
             width: 415
             readOnly: true
-            text: "0"
+            text: "0"//calculator.displayText
             //text: calculator.displayText
             horizontalAlignment: Text.AlignRight
             verticalAlignment: Text.AlignVCenter
