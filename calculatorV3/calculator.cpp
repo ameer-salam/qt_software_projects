@@ -3,7 +3,6 @@
 
 Calculator::Calculator(QObject *parent) : QObject(parent), OperatorAndOperand("")
 {
-
 }
 
 
