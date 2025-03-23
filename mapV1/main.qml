@@ -1,6 +1,8 @@
 import QtQuick 2.5
 import QtQuick.Window 2.2
 import QtQuick.Controls 1.0
+
+
 import droneData 1.0
 
 
@@ -48,8 +50,6 @@ Window {
             }
         }
     }
-
-
 //    Column{
 //        id: _column
 //        spacing: 5
