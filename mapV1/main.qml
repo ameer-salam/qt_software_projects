@@ -32,10 +32,21 @@ Window {
         }
 
     Map{
+        id: _mapArea
         anchors.fill: parent
         plugin: mapPlugin
         center: QtPositioning.coordinate(13.328353, 77.080545) //13.328353°N 77.080545°E
         zoomLevel: 16
+
+        MouseArea{
+            anchors.fill: parent
+            onClicked: {
+                var lat, lon, cord = _mapArea.toCoordinate(Qt.point(mouse.x, mouse.y))
+                lat = cord.latitude
+                lon = cord.longitude
+                _droneData.returnOfLatLon(lat, lon)
+            }
+        }
     }
 
 

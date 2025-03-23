@@ -9,6 +9,7 @@ class DroneData : public QObject
 public:
     explicit DroneData(QObject *parent = nullptr);
     Q_INVOKABLE void startTheDrone();
+    Q_INVOKABLE void returnOfLatLon(QString, QString);
 
 signals:
 
