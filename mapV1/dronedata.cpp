@@ -4,16 +4,15 @@
 
 DroneData::DroneData(QObject *parent) : QObject(parent)
 {
-
 }
 
-void DroneData::startTheDrone()
-{
-    qDebug()<<"User clicked to start the drone!";
-}
 
 void DroneData::returnOfLatLon(QString lat, QString lon)
 {
     qDebug()<<"The Latitude is : "<<lat<<" Longitude is : "<<lon;
-}
 
+    //converting QString to float
+    DroneData::homeLat = lat.toFloat();
+    DroneData::homeLon = lon.toFloat();
+    qDebug()<<"The Latitude is : "<<DroneData::homeLat<<" Longitude is : "<<DroneData::homeLon;
+}
