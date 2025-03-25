@@ -80,8 +80,8 @@ Window {
             sourceItem: Image {
                 id: _ShomeImage
                 source: "file:///C:/Users/Ameer/OneDrive - aus.co.in/Documents/Qt_projects/qt_software_projects/qt_software_projects/mapV1/resources/drone_icon_2.webp"
-                width: 50//_homeImage.width/2
-                height: 50 //_homeImage.height/2
+                width: 35//_homeImage.width/2
+                height: 35 //_homeImage.height/2
             }
         }
     }
