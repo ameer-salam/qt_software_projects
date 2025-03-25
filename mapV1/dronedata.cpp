@@ -1,8 +1,10 @@
 #include "dronedata.h"
 #include <QDebug>
 #include <QString>
+#include <QGeoCoordinate>
 
-DroneData::DroneData(QObject *parent) : QObject(parent), coordCliked(false)
+
+DroneData::DroneData(QObject *parent) : QObject(parent)
 {
 }
 
@@ -10,21 +12,23 @@ DroneData::DroneData(QObject *parent) : QObject(parent), coordCliked(false)
 void DroneData::returnOfLatLon(QString lat, QString lon)
 {
     //qDebug()<<"The Latitude is : "<<lat<<" Longitude is : "<<lon;
-    //converting QString to float
-    DroneData::homeLat = lat.toFloat();
-    DroneData::homeLon = lon.toFloat();
-    qDebug()<<"The Latitude is : "<<DroneData::homeLat<<" Longitude is : "<<DroneData::homeLon;
-    setCoordCliked(true);
+    qDebug()<<"The Latitude is : "<<lat<<" Longitude is : "<<lon;
+    if(DroneData::clikedForGrid == false)
+    {
+        //converting QString to float
+        DroneData::homeLat = lat.toDouble();
+        DroneData::homeLon = lon.toDouble();
+        clikedForGrid = true;
+        qDebug()<<"The first Grid read";
+        qDebug()<<"The Latitude is : "<<homeLat<<" Longitude is : "<<homeLon;
+        hexagon.append(GeoPoint(homeLat, homeLon));
+        createHexagon(hexagon[0]);
+    }
 }
 
-bool DroneData::coordCliked()
+void DroneData::createHexagon(GeoPoint home)
 {
-    return init_coordClicked;
-}
 
-void DroneData::setCoordCliked(bool status)
-{
-    if(init_coordClicked != status)
-        init_coordClicked = status;
-    qDebug()<<"Has the user clicked on the Map once : "<<init_coordClicked;
+    QGeoCoordinate homePoint(home.latitude, home.longitude);
+    qDebug()<<"Point is  : "<<homePoint.QGeoCoordinate::atDistanceAndAzimuth(200, 60);
 }

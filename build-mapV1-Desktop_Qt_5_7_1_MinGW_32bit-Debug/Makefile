@@ -214,6 +214,7 @@ Makefile: ../mapV1/mapV1.pro C:/Qt/Qt5.7.1/5.7/mingw53_32/mkspecs/win32-g++/qmak
 		C:/Qt/Qt5.7.1/5.7/mingw53_32/lib/Qt5Gui.prl \
 		C:/Qt/Qt5.7.1/5.7/mingw53_32/lib/Qt5Qml.prl \
 		C:/Qt/Qt5.7.1/5.7/mingw53_32/lib/Qt5Network.prl \
+		C:/Qt/Qt5.7.1/5.7/mingw53_32/lib/Qt5Positioning.prl \
 		C:/Qt/Qt5.7.1/5.7/mingw53_32/lib/Qt5Core.prl
 	$(QMAKE) -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" -o Makefile ..\mapV1\mapV1.pro
 C:/Qt/Qt5.7.1/5.7/mingw53_32/mkspecs/features/spec_pre.prf:
@@ -371,6 +372,7 @@ C:/Qt/Qt5.7.1/5.7/mingw53_32/lib/Qt5Quick.prl:
 C:/Qt/Qt5.7.1/5.7/mingw53_32/lib/Qt5Gui.prl:
 C:/Qt/Qt5.7.1/5.7/mingw53_32/lib/Qt5Qml.prl:
 C:/Qt/Qt5.7.1/5.7/mingw53_32/lib/Qt5Network.prl:
+C:/Qt/Qt5.7.1/5.7/mingw53_32/lib/Qt5Positioning.prl:
 C:/Qt/Qt5.7.1/5.7/mingw53_32/lib/Qt5Core.prl:
 qmake: FORCE
 	@$(QMAKE) -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" -o Makefile ..\mapV1\mapV1.pro

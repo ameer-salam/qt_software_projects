@@ -47,7 +47,7 @@ Window {
             anchors.fill: parent
             onClicked: {
                 var lat, lon, cord =  _mapArea.toCoordinate(Qt.point(mouse.x, mouse.y))
-                //console.log(cord);
+                console.log(cord);
                 lat = cord.latitude
                 lon = cord.longitude
                 _droneData.returnOfLatLon(lat, lon)

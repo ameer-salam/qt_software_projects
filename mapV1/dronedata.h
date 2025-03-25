@@ -3,26 +3,31 @@
 
 #include <QObject>
 #include <qstring.h>
+#include <QVector>
 
 class DroneData : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(bool coordCliked READ coordCliked WRITE setCoordCliked NOTIFY coordClikedChanged)
-
 public:
     explicit DroneData(QObject *parent = nullptr);
     Q_INVOKABLE void returnOfLatLon(QString, QString);
 
-    float homeLat, homeLon;
-    bool coordCliked();
-    void setCoordCliked(bool);
+    double homeLat, homeLon;
+    bool clikedForGrid = false;
+    struct GeoPoint{
+        double latitude;
+        double longitude;
+
+        GeoPoint(double lat, double lon) : latitude(lat), longitude(lon) {}
+    };
+    QVector<GeoPoint> hexagon; //vector to store hexagon
+    void createHexagon(GeoPoint);
 
 signals:
 
 public slots:
 
 private:
-    bool init_coordClicked = false;
 };
 
 #endif // DRONEDATA_H
