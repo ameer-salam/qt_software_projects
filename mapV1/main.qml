@@ -7,6 +7,8 @@ import droneData 1.0
 import QtPositioning 5.6
 import QtLocation 5.6
 
+//13.322527°N 77.101740°E
+
 Window {
     visible: true
     minimumHeight: 500
@@ -35,7 +37,9 @@ Window {
         id: _mapArea
         anchors.fill: parent
         plugin: mapPlugin
-        center: QtPositioning.coordinate(13.328353, 77.080545) //13.328353°N 77.080545°E
+        center: QtPositioning.coordinate(13.328353, 77.080545)
+        //Home - 13.328353°N 77.080545°E
+        //S.Home - 13.322527°N 77.101740°E
         zoomLevel: 16
 
         //to get the lat and long of the location where the mouse has been clicked
@@ -61,6 +65,21 @@ Window {
             sourceItem: Image {
                 id: _homeImage
                 source: "file:///C:/Users/Ameer/OneDrive - aus.co.in/Documents/Qt_projects/qt_software_projects/qt_software_projects/mapV1/resources/drone_icon_1.webp"
+                width: 50//_homeImage.width/2
+                height: 50 //_homeImage.height/2
+            }
+        }
+
+        MapQuickItem{
+            id: _ShomeLoc
+            coordinate: QtPositioning.coordinate(13.322527, 77.101740)
+            anchorPoint.x: _ShomeImage.width/2
+            anchorPoint.y: _ShomeImage.height/2
+
+            //to load the image of the home
+            sourceItem: Image {
+                id: _ShomeImage
+                source: "file:///C:/Users/Ameer/OneDrive - aus.co.in/Documents/Qt_projects/qt_software_projects/qt_software_projects/mapV1/resources/drone_icon_2.webp"
                 width: 50//_homeImage.width/2
                 height: 50 //_homeImage.height/2
             }

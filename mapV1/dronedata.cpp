@@ -9,8 +9,7 @@ DroneData::DroneData(QObject *parent) : QObject(parent)
 
 void DroneData::returnOfLatLon(QString lat, QString lon)
 {
-    qDebug()<<"The Latitude is : "<<lat<<" Longitude is : "<<lon;
-
+    //qDebug()<<"The Latitude is : "<<lat<<" Longitude is : "<<lon;
     //converting QString to float
     DroneData::homeLat = lat.toFloat();
     DroneData::homeLon = lon.toFloat();
