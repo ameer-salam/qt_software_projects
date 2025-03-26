@@ -79,6 +79,7 @@ Window {
             }
         }
     }
+
     Button{
         visible: _droneData.buttonShow
         anchors.horizontalCenter: parent.horizontalCenter
@@ -88,7 +89,7 @@ Window {
         height: 100
         text : "Start Mission"
         onClicked: {
-            console.log("Button clicked!")
+            console.log("Start Mission Button clicked!")
         }
     }
 }

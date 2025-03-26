@@ -9,6 +9,7 @@ class DroneData : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(bool buttonShow READ buttonShow WRITE setButtonShow NOTIFY buttonShowChanged)
+    //Q_PROPERTY(QVector<QGeoCoordinate> displayHexagon READ displayHexagon WRITE setDisplayHexagon NOTIFY displayHexagonChanged)
 
 public:
     explicit DroneData(QObject *parent = nullptr);
@@ -36,8 +37,13 @@ public:
         emit buttonShowChanged();
     }
 
+    //QPROPERTY for hexagon display
+    //void displayHexagon();
+    //void setDisplayHexagon();
+
 signals:
-    void buttonShowChanged();
+    void buttonShowChanged(); //to display the button
+    //void displayHexagonChanged(); //to display the hexagon
 
 public slots:
 };
