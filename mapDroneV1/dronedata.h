@@ -4,19 +4,18 @@
 #include <QObject>
 #include <QGeoCoordinate>
 #include <QVector>
+#include <QDebug>
 
 class DroneData : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(bool buttonShow READ buttonShow WRITE setButtonShow NOTIFY buttonShowChanged)
-    //Q_PROPERTY(QVector<QGeoCoordinate> displayHexagon READ displayHexagon WRITE setDisplayHexagon NOTIFY displayHexagonChanged)
 
 public:
     explicit DroneData(QObject *parent = nullptr);
 
     //to get the geocoordinates when clicked
     Q_INVOKABLE void getCoorFunction(QGeoCoordinate);
-    bool firstGeoClick = false;
 
     //home coordinates
     QGeoCoordinate home;
@@ -33,19 +32,20 @@ public:
     bool buttonShow(){ return firstGeoClick; }
     void setButtonShow(bool state){
         if(firstGeoClick != state)
+        {
             firstGeoClick=state;
-        emit buttonShowChanged();
+            emit buttonShowChanged();
+            qDebug()<<"Now the firstGeoClick is : "<<firstGeoClick;
+        }
     }
-
-    //QPROPERTY for hexagon display
-    //void displayHexagon();
-    //void setDisplayHexagon();
 
 signals:
     void buttonShowChanged(); //to display the button
-    //void displayHexagonChanged(); //to display the hexagon
 
 public slots:
+
+private:
+    bool firstGeoClick;
 };
 
 #endif // DRONEDATA_H

@@ -1,9 +1,8 @@
 #include "dronedata.h"
 #include <QDebug>
 
-DroneData::DroneData(QObject *parent) : QObject(parent)
+DroneData::DroneData(QObject *parent) : QObject(parent), firstGeoClick(false)
 {
-
 }
 
 void DroneData::getCoorFunction(QGeoCoordinate coord)
@@ -29,8 +28,9 @@ void DroneData::createHexagon(QGeoCoordinate firstPoint)
 
     hexagonCoord.append({bottomLeft, middleLeft, topLeft, topRight, middleRight, bottomRight});
     //qDebug()<<"This : "<<hexagonCoord[0];
+    qDebug()<<"The Hexagon Coordinates are : ";
     for(int i=0; i<hexagonCoord.length(); i++)
     {
-        qDebug()<<"\t\tLatitude : "<<hexagonCoord[i].latitude()<<" Longitude : "<<hexagonCoord[i].longitude();
+        qDebug()<<"\t\t"<<"Point"<<i+1<<" : Latitude : "<<hexagonCoord[i].latitude()<<"   \t Longitude : "<<hexagonCoord[i].longitude();
     }
 }
