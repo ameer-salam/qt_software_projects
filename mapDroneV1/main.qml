@@ -29,6 +29,7 @@ Window {
             value: "http://maps-redirect.qt.io/osm/5.6/"
         }
     }
+
     Map{
         id: _mainMapArea
         anchors.fill: parent
@@ -70,9 +71,24 @@ Window {
             anchors.fill: parent
             onClicked: {
                 var cord = _mainMapArea.toCoordinate(Qt.point(mouse.x, mouse.y))
-                console.log("Clicked on : " + cord);
+                //console.log("Clicked on : " + cord);
                 _droneData.getCoorFunction(cord);
+
+                //this was created to see if the button Q_Property is working
+                //console.log("" + _droneData.buttonShow);
             }
+        }
+    }
+    Button{
+        visible: _droneData.buttonShow
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 50
+        width: 300
+        height: 100
+        text : "Start Mission"
+        onClicked: {
+            console.log("Button clicked!")
         }
     }
 }

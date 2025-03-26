@@ -11,11 +11,11 @@ void DroneData::getCoorFunction(QGeoCoordinate coord)
     qDebug()<<"The coordinates obtaines are : Latitude = "<<coord.latitude()<<"  longitude = "<<coord.longitude();
     if(DroneData::firstGeoClick == false)
     {
-        DroneData::firstGeoClick = true;
+        DroneData::setButtonShow(true);
         DroneData::home = coord;
         qDebug()<<"Home has been Set!";
+        createHexagon(home);
     }
-    createHexagon(home);
 }
 
 void DroneData::createHexagon(QGeoCoordinate firstPoint)
