@@ -10,6 +10,7 @@ class DroneData : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(bool buttonShow READ buttonShow WRITE setButtonShow NOTIFY buttonShowChanged)
+    Q_PROPERTY(QVariantList displayhexagon READ getdisplayhexagon)
 
 public:
     explicit DroneData(QObject *parent = nullptr);
@@ -27,6 +28,18 @@ public:
     bool buttonShow();
     void setButtonShow(bool);
 
+    QVariantList getdisplayhexagon() const{
+        QVariantList list;
+        for(const QGeoCoordinate &coord : hexagonCoord){
+            QVariantMap map;
+            map["latitude"] = coord.latitude();
+            map["longitude"] = coord.longitude();
+            list.append(map);
+        }
+        return list;
+    }
+
+
 signals:
     void buttonShowChanged(); //to display the button
 
@@ -37,7 +50,6 @@ private:
     //points start from bottom left and go clockwise to bottom right
     QGeoCoordinate bottomLeft, middleLeft, topLeft, topRight, middleRight, bottomRight; //b-bottom, t-top, r-right, l-left, m-middle
     QList<QGeoCoordinate> hexagonCoord;
-    QVariantList temp_hexagonCoord;
 
     bool firstGeoClick;
 

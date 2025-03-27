@@ -8,6 +8,9 @@ import QtLocation 5.6
 import droneData 1.0
 
 Window {
+
+    property var droneCooridnates : [] ;
+
     visible: true
     minimumHeight: 400
     minimumWidth: 600
@@ -80,6 +83,13 @@ Window {
                 //console.log("" + _droneData.buttonShow);
             }
         }
+        MapPolyline {
+            id: dronePath
+            line.width: 5
+            line.color: "red"
+            path: droneCooridnates
+        }
+
     }
 
     Button{
@@ -94,7 +104,18 @@ Window {
             console.log("Start Mission Button clicked!")
             //_droneData.displayHexagonPoints;
             //for(var i=0; i<_droneData.hexagonCoordinates; i++)
-                //console.log(_droneData.hexagonCoordinates[0])
+            droneCooridnates = [];
+            for(var i=0; i<_droneData.displayhexagon.length; i++)
+            {
+                var cord = _droneData.displayhexagon[i];
+                //console.log("Latitude : " + cord.latitude + "  Longitude : " + cord.longitude);
+                droneCooridnates.push(QtPositioning.coordinate(cord.latitude, cord.longitude));
+            }
+            droneCooridnates = droneCooridnates;
+            console.log(droneCooridnates);
         }
     }
+
+
+
 }

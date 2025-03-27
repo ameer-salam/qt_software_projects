@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_DroneData_t {
-    QByteArrayData data[6];
-    char stringdata0[71];
+    QByteArrayData data[7];
+    char stringdata0[86];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -34,12 +34,13 @@ QT_MOC_LITERAL(1, 10, 17), // "buttonShowChanged"
 QT_MOC_LITERAL(2, 28, 0), // ""
 QT_MOC_LITERAL(3, 29, 15), // "getCoorFunction"
 QT_MOC_LITERAL(4, 45, 14), // "QGeoCoordinate"
-QT_MOC_LITERAL(5, 60, 10) // "buttonShow"
+QT_MOC_LITERAL(5, 60, 10), // "buttonShow"
+QT_MOC_LITERAL(6, 71, 14) // "displayhexagon"
 
     },
     "DroneData\0buttonShowChanged\0\0"
     "getCoorFunction\0QGeoCoordinate\0"
-    "buttonShow"
+    "buttonShow\0displayhexagon"
 };
 #undef QT_MOC_LITERAL
 
@@ -50,7 +51,7 @@ static const uint qt_meta_data_DroneData[] = {
        0,       // classname
        0,    0, // classinfo
        2,   14, // methods
-       1,   28, // properties
+       2,   28, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
@@ -70,8 +71,10 @@ static const uint qt_meta_data_DroneData[] = {
 
  // properties: name, type, flags
        5, QMetaType::Bool, 0x00495103,
+       6, QMetaType::QVariantList, 0x00095001,
 
  // properties: notify_signal_id
+       0,
        0,
 
        0        // eod
@@ -116,6 +119,7 @@ void DroneData::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         void *_v = _a[0];
         switch (_id) {
         case 0: *reinterpret_cast< bool*>(_v) = _t->buttonShow(); break;
+        case 1: *reinterpret_cast< QVariantList*>(_v) = _t->getdisplayhexagon(); break;
         default: break;
         }
     } else if (_c == QMetaObject::WriteProperty) {
@@ -168,17 +172,17 @@ int DroneData::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
    else if (_c == QMetaObject::ReadProperty || _c == QMetaObject::WriteProperty
             || _c == QMetaObject::ResetProperty || _c == QMetaObject::RegisterPropertyMetaType) {
         qt_static_metacall(this, _c, _id, _a);
-        _id -= 1;
+        _id -= 2;
     } else if (_c == QMetaObject::QueryPropertyDesignable) {
-        _id -= 1;
+        _id -= 2;
     } else if (_c == QMetaObject::QueryPropertyScriptable) {
-        _id -= 1;
+        _id -= 2;
     } else if (_c == QMetaObject::QueryPropertyStored) {
-        _id -= 1;
+        _id -= 2;
     } else if (_c == QMetaObject::QueryPropertyEditable) {
-        _id -= 1;
+        _id -= 2;
     } else if (_c == QMetaObject::QueryPropertyUser) {
-        _id -= 1;
+        _id -= 2;
     }
 #endif // QT_NO_PROPERTIES
     return _id;
