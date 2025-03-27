@@ -19,14 +19,14 @@ void DroneData::getCoorFunction(QGeoCoordinate coord)
 
 void DroneData::createHexagon(QGeoCoordinate firstPoint)
 {
-    DroneData::bottomLeft = firstPoint;
-    DroneData::middleLeft = bottomLeft.atDistanceAndAzimuth(200, 60, 0);
-    DroneData::topLeft = middleLeft.atDistanceAndAzimuth(200, 90, 0);
-    DroneData::topRight = topLeft.atDistanceAndAzimuth(200, 90, 0);
-    DroneData::middleRight = topRight.atDistanceAndAzimuth(200, 120, 0);
-    DroneData::bottomRight = firstPoint.atDistanceAndAzimuth(200, 90, 0);
+    DroneData::bottomLeft = firstPoint.atDistanceAndAzimuth(200, 210, 0);;
+    DroneData::middleLeft = bottomLeft.atDistanceAndAzimuth(200, 270, 0);
+    DroneData::topLeft = middleLeft.atDistanceAndAzimuth(200, 330, 0);
+    DroneData::topRight = topLeft.atDistanceAndAzimuth(200, 30, 0);
+    DroneData::middleRight = topRight.atDistanceAndAzimuth(200, 90, 0);
+    DroneData::bottomRight = middleRight.atDistanceAndAzimuth(200, 150, 0);
 
-    hexagonCoord.append({bottomLeft, middleLeft, topLeft, topRight, middleRight, bottomRight});
+    hexagonCoord.append({bottomLeft, middleLeft, topLeft, topRight, middleRight,bottomRight,bottomLeft});
     //qDebug()<<"This : "<<hexagonCoord[0];
     qDebug()<<"The Hexagon Coordinates are : ";
     for(int i=0; i<hexagonCoord.length(); i++)

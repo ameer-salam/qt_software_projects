@@ -72,6 +72,7 @@ Window {
             }
         }
 
+
         MouseArea{
             anchors.fill: parent
             onClicked: {
@@ -83,6 +84,7 @@ Window {
                 //console.log("" + _droneData.buttonShow);
             }
         }
+
         MapPolyline {
             id: dronePath
             line.width: 5
@@ -115,7 +117,5 @@ Window {
             console.log(droneCooridnates);
         }
     }
-
-
 
 }
