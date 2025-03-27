@@ -1,7 +1,7 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
-#include "example.h"
+#include "xample.h"
 
 int main(int argc, char *argv[])
 {
@@ -9,8 +9,7 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
 
-    qmlRegisterType<Example>("example", 1, 0, "Example");
-
+    qmlRegisterType<Xample>("example", 1, 0, "Example");
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 
     return app.exec();

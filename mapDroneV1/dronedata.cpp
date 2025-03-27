@@ -34,3 +34,18 @@ void DroneData::createHexagon(QGeoCoordinate firstPoint)
         qDebug()<<"\t\t"<<"Point"<<i+1<<" : Latitude : "<<hexagonCoord[i].latitude()<<"   \t Longitude : "<<hexagonCoord[i].longitude();
     }
 }
+
+bool DroneData::buttonShow()
+{
+    return firstGeoClick;
+}
+
+void DroneData::setButtonShow(bool state)
+{
+    if(firstGeoClick != state)
+    {
+        firstGeoClick=state;
+        emit buttonShowChanged();
+        qDebug()<<"Now the firstGeoClick is : "<<firstGeoClick;
+    }
+}

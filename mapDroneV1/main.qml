@@ -9,6 +9,8 @@ import droneData 1.0
 
 Window {
     visible: true
+    minimumHeight: 400
+    minimumWidth: 600
     visibility: Window.Maximized
     title: "Map display on the drone"
 
@@ -90,6 +92,9 @@ Window {
         text : "Start Mission"
         onClicked: {
             console.log("Start Mission Button clicked!")
+            //_droneData.displayHexagonPoints;
+            //for(var i=0; i<_droneData.hexagonCoordinates; i++)
+                //console.log(_droneData.hexagonCoordinates[0])
         }
     }
 }

@@ -3,7 +3,7 @@
 
 #include <QObject>
 #include <QGeoCoordinate>
-#include <QVector>
+#include <QList>
 #include <QDebug>
 
 class DroneData : public QObject
@@ -23,21 +23,9 @@ public:
     //create hexagon
     void createHexagon(QGeoCoordinate);
 
-    //hexagonPoints
-    //points start from bottom left and go clockwise to bottom right
-    QGeoCoordinate bottomLeft, middleLeft, topLeft, topRight, middleRight, bottomRight; //b-bottom, t-top, r-right, l-left, m-middle
-    QVector<QGeoCoordinate> hexagonCoord;
-
-    //for Q_Property
-    bool buttonShow(){ return firstGeoClick; }
-    void setButtonShow(bool state){
-        if(firstGeoClick != state)
-        {
-            firstGeoClick=state;
-            emit buttonShowChanged();
-            qDebug()<<"Now the firstGeoClick is : "<<firstGeoClick;
-        }
-    }
+    //for Q_Property of button
+    bool buttonShow();
+    void setButtonShow(bool);
 
 signals:
     void buttonShowChanged(); //to display the button
@@ -45,7 +33,15 @@ signals:
 public slots:
 
 private:
+    //hexagonPoints
+    //points start from bottom left and go clockwise to bottom right
+    QGeoCoordinate bottomLeft, middleLeft, topLeft, topRight, middleRight, bottomRight; //b-bottom, t-top, r-right, l-left, m-middle
+    QList<QGeoCoordinate> hexagonCoord;
+    QVariantList temp_hexagonCoord;
+
     bool firstGeoClick;
+
+
 };
 
 #endif // DRONEDATA_H
