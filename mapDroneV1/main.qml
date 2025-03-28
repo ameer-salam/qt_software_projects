@@ -10,6 +10,7 @@ import droneData 1.0
 Window {
 
     property var droneCooridnates : [] ;
+    property var centerPoint : QtPositioning.coordinate(13.328353, 77.080545);
 
     visible: true
     minimumHeight: 400
@@ -39,8 +40,26 @@ Window {
         id: _mainMapArea
         anchors.fill: parent
         plugin: mapPlugin
-        center: QtPositioning.coordinate(13.328353, 77.080545)
+        center: centerPoint //QtPositioning.coordinate(13.328353, 77.080545)
         zoomLevel: 16
+
+        Repeater{
+            model: droneCooridnates
+            delegate: MapQuickItem{
+                coordinate: modelData
+                anchorPoint.x: dotimage.width/2
+                anchorPoint.y: dotimage.height/2
+                sourceItem: Rectangle{
+                    id: dotimage
+                    width: 20
+                    height: 20
+                    color: "yellow"
+                    radius: 10
+                    border.color: "black"
+                    border.width: 2
+                }
+            }
+        }
 
         //To show my home
         MapQuickItem{
@@ -79,9 +98,6 @@ Window {
                 var cord = _mainMapArea.toCoordinate(Qt.point(mouse.x, mouse.y))
                 //console.log("Clicked on : " + cord);
                 _droneData.getCoorFunction(cord);
-
-                //this was created to see if the button Q_Property is working
-                //console.log("" + _droneData.buttonShow);
             }
         }
 
@@ -91,31 +107,27 @@ Window {
             line.color: "red"
             path: droneCooridnates
         }
-
     }
 
     Button{
         visible: _droneData.buttonShow
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottom: parent.bottom
-        anchors.bottomMargin: 50
+        anchors.bottomMargin: 60
         width: 300
         height: 100
         text : "Start Mission"
         onClicked: {
             console.log("Start Mission Button clicked!")
-            //_droneData.displayHexagonPoints;
-            //for(var i=0; i<_droneData.hexagonCoordinates; i++)
             droneCooridnates = [];
             for(var i=0; i<_droneData.displayhexagon.length; i++)
             {
                 var cord = _droneData.displayhexagon[i];
-                //console.log("Latitude : " + cord.latitude + "  Longitude : " + cord.longitude);
                 droneCooridnates.push(QtPositioning.coordinate(cord.latitude, cord.longitude));
             }
             droneCooridnates = droneCooridnates;
             console.log(droneCooridnates);
+            centerPoint = droneCooridnates[0]; //aligns the map to the centerpoint
         }
     }
-
 }
