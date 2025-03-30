@@ -27,14 +27,19 @@ Window {
     visibility: Window.Maximized
     title: "Map display on the drone"
 
-    DroneData{
+    DroneData {
         id: _droneData
         onDroneLocationChanged: {
-            //displayPolygonPoints = [];
-            displayPolygonPoints = displayPolygonPoints.concat(_droneData.droneLocation);
-            console.log(displayPolygonPoints);
+            onDroneLocationChanged: {
+                var updatedPath = displayPolygonPoints.slice(); // Copy existing points
+                updatedPath.push(_droneData.droneLocation); // Add new coordinate
+                displayPolygonPoints = updatedPath; // Assign new array to trigger UI update
+            }
+
         }
+
     }
+
 
     Plugin{
         id: mapPlugin
@@ -57,6 +62,13 @@ Window {
         center: centerPoint //QtPositioning.coordinate(13.328353, 77.080545)
         zoomLevel: 16
 
+        //this has to be changes
+        MapPolyline {
+            id: dronePath
+            line.width: 5
+            line.color: "red"
+            path: displayPolygonPoints
+        }
 
         //To show my home
         MapQuickItem{
@@ -96,15 +108,6 @@ Window {
                 //console.log("Clicked on : " + cord);
                 _droneData.getCoorFunction(cord);
             }
-        }
-
-
-        //this has to be changes
-        MapPolyline {
-            id: dronePath
-            line.width: 5
-            line.color: "red"
-            path: displayPolygonPoints
         }
 
 
@@ -227,7 +230,7 @@ Window {
         anchors.bottomMargin: 60
         width: 300
         height: 100
-        text : "Load Poly on Point Clicked"
+        text : "Start Mission"
         onClicked: {
             console.log("Start Mission Button clicked!")
             coordinatePoints = [];
