@@ -19,7 +19,7 @@ void DroneData::getCoorFunction(QGeoCoordinate coord)
 
 void DroneData::createHexagon(QGeoCoordinate firstPoint)
 {
-    DroneData::bottomLeft = firstPoint.atDistanceAndAzimuth(200, 210, 0);;
+    DroneData::bottomLeft = firstPoint; //.atDistanceAndAzimuth(200, 210, 0);;
     DroneData::middleLeft = bottomLeft.atDistanceAndAzimuth(200, 270, 0);
     DroneData::topLeft = middleLeft.atDistanceAndAzimuth(200, 330, 0);
     DroneData::topRight = topLeft.atDistanceAndAzimuth(200, 30, 0);
@@ -48,4 +48,9 @@ void DroneData::setButtonShow(bool state)
         emit buttonShowChanged();
         qDebug()<<"Now the firstGeoClick is : "<<firstGeoClick;
     }
+}
+
+void DroneData::missionStart(){
+    qDebug()<<"Start of the Mission";
+    setDroneLocation(bottomRight);
 }

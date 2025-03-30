@@ -11,12 +11,14 @@ class DroneData : public QObject
     Q_OBJECT
     Q_PROPERTY(bool buttonShow READ buttonShow WRITE setButtonShow NOTIFY buttonShowChanged)
     Q_PROPERTY(QVariantList displayhexagon READ getdisplayhexagon)
+    Q_PROPERTY(QGeoCoordinate droneLocation READ droneLocation WRITE setDroneLocation NOTIFY droneLocationChanged)
 
 public:
     explicit DroneData(QObject *parent = nullptr);
 
     //to get the geocoordinates when clicked
     Q_INVOKABLE void getCoorFunction(QGeoCoordinate);
+    Q_INVOKABLE void missionStart();
 
     //home coordinates
     QGeoCoordinate home;
@@ -39,9 +41,24 @@ public:
         return list;
     }
 
+    QGeoCoordinate droneLocation()
+    {
+        return first_droneLocation;
+    }
+
+    void setDroneLocation(QGeoCoordinate new_position)
+    {
+        if(first_droneLocation != new_position)
+        {
+            first_droneLocation = new_position;
+            emit droneLocationChanged();
+        }
+    }
+
 
 signals:
     void buttonShowChanged(); //to display the button
+    void droneLocationChanged();
 
 public slots:
 
@@ -52,6 +69,7 @@ private:
     QList<QGeoCoordinate> hexagonCoord;
 
     bool firstGeoClick;
+    QGeoCoordinate first_droneLocation = home;
 
 
 };

@@ -9,8 +9,15 @@ import droneData 1.0
 
 Window {
 
-    property var droneCooridnates : [] ;
+    property var coordinatePoints : [] ;
+    property var displayPolygonPoints : [] ;
     property var centerPoint : QtPositioning.coordinate(13.328353, 77.080545);
+    property var coord1;
+    property var coord2;
+    property var coord3;
+    property var coord4;
+    property var coord5;
+    property var coord6;
 
     visible: true
     minimumHeight: 400
@@ -43,23 +50,6 @@ Window {
         center: centerPoint //QtPositioning.coordinate(13.328353, 77.080545)
         zoomLevel: 16
 
-        Repeater{
-            model: droneCooridnates
-            delegate: MapQuickItem{
-                coordinate: modelData
-                anchorPoint.x: dotimage.width/2
-                anchorPoint.y: dotimage.height/2
-                sourceItem: Rectangle{
-                    id: dotimage
-                    width: 20
-                    height: 20
-                    color: "yellow"
-                    radius: 10
-                    border.color: "black"
-                    border.width: 2
-                }
-            }
-        }
 
         //To show my home
         MapQuickItem{
@@ -91,7 +81,7 @@ Window {
             }
         }
 
-
+        //to get the coordinate of the point at which the user click
         MouseArea{
             anchors.fill: parent
             onClicked: {
@@ -101,33 +91,158 @@ Window {
             }
         }
 
-        MapPolyline {
-            id: dronePath
-            line.width: 5
-            line.color: "red"
-            path: droneCooridnates
+
+        //this has to be changes
+//        MapPolyline {
+//            id: dronePath
+//            line.width: 5
+//            line.color: "red"
+//            path: coordinatePoints
+//        }
+
+
+        //Polygon Marker
+        MapQuickItem{
+            id: _DroneHomeMarkers
+            coordinate: coord1
+            anchorPoint.x: _sHomeImage2.width/2
+            anchorPoint.y: _sHomeImage2.height/2
+
+            sourceItem: Image {
+                id: _sHomeImage2
+                source: "file:///C:/Users/Ameer/OneDrive - aus.co.in/Documents/Qt_projects/qt_software_projects/qt_software_projects/mapV1/resources/DonrHomeMarker.png"
+                width: 35
+                height: 35
+            }
+        }
+
+        //points display
+        MapQuickItem{
+            coordinate: coord1
+            anchorPoint.x: _point1.width/2
+            anchorPoint.y: _point1.height/2
+
+            sourceItem: Rectangle{
+                id: _point1
+                width: 10
+                height: 10
+                color: "red"
+                radius: 4
+            }
+        }
+        MapQuickItem{
+            coordinate: coord2
+            anchorPoint.x: _point2.width/2
+            anchorPoint.y: _point2.height/2
+
+            sourceItem: Rectangle{
+                id: _point2
+                width: 10
+                height: 10
+                color: "red"
+                radius: 4
+            }
+        }
+        MapQuickItem{
+            coordinate: coord3
+            anchorPoint.x: _point3.width/2
+            anchorPoint.y: _point3.height/2
+
+            sourceItem: Rectangle{
+                id: _point3
+                width: 10
+                height: 10
+                color: "red"
+                radius: 4
+            }
+        }
+        MapQuickItem{
+            coordinate: coord4
+            anchorPoint.x: _point4.width/2
+            anchorPoint.y: _point4.height/2
+
+            sourceItem: Rectangle{
+                id: _point4
+                width: 10
+                height: 10
+                color: "red"
+                radius: 4
+            }
+        }
+        MapQuickItem{
+            coordinate: coord5
+            anchorPoint.x: _point5.width/2
+            anchorPoint.y: _point5.height/2
+
+            sourceItem: Rectangle{
+                id: _point5
+                width: 10
+                height: 10
+                color: "red"
+                radius: 4
+            }
+        }
+        MapQuickItem{
+            coordinate: coord6
+            anchorPoint.x: _point6.width/2
+            anchorPoint.y: _point6.height/2
+
+            sourceItem: Rectangle{
+                id: _point6
+                width: 10
+                height: 10
+                color: "red"
+                radius: 4
+            }
+        }
+
+        MapQuickItem{
+            coordinate: _droneData.droneLocation
+            anchorPoint.x: _point7.width/2
+            anchorPoint.y: _point7.height/2
+
+            sourceItem: Rectangle{
+                id: _point7
+                width: 20
+                height: 20
+                color: "yellow"
+                radius: 4
+            }
         }
     }
 
     Button{
+        id: _missionButton
+        parent: Window
         visible: _droneData.buttonShow
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 60
         width: 300
         height: 100
-        text : "Start Mission"
+        text : "Load Poly on Point Clicked"
         onClicked: {
             console.log("Start Mission Button clicked!")
-            droneCooridnates = [];
+            coordinatePoints = [];
             for(var i=0; i<_droneData.displayhexagon.length; i++)
             {
                 var cord = _droneData.displayhexagon[i];
-                droneCooridnates.push(QtPositioning.coordinate(cord.latitude, cord.longitude));
+                coordinatePoints.push(QtPositioning.coordinate(cord.latitude, cord.longitude));
             }
-            droneCooridnates = droneCooridnates;
-            console.log(droneCooridnates);
-            centerPoint = droneCooridnates[0]; //aligns the map to the centerpoint
+            coordinatePoints = coordinatePoints;
+            console.log(coordinatePoints);
+            centerPoint = coordinatePoints[0]; //aligns the map to the centerpoint
+
+            //allocate the points
+            coord1 = coordinatePoints[0];
+            coord2 = coordinatePoints[1];
+            coord3 = coordinatePoints[2];
+            coord4 = coordinatePoints[3];
+            coord5 = coordinatePoints[4];
+            coord6 = coordinatePoints[5];
+            _droneData.missionStart();
         }
     }
 }
+
+
