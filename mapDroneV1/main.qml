@@ -9,8 +9,10 @@ import droneData 1.0
 
 Window {
 
+    id: _mainUIWindow
+
     property var coordinatePoints : [] ;
-    property var displayPolygonPoints : [] ;
+    property var displayPolygonPoints : [coord1] ;
     property var centerPoint : QtPositioning.coordinate(13.328353, 77.080545);
     property var coord1;
     property var coord2;
@@ -27,6 +29,11 @@ Window {
 
     DroneData{
         id: _droneData
+        onDroneLocationChanged: {
+            //displayPolygonPoints = [];
+            displayPolygonPoints = displayPolygonPoints.concat(_droneData.droneLocation);
+            console.log(displayPolygonPoints);
+        }
     }
 
     Plugin{
@@ -244,5 +251,3 @@ Window {
         }
     }
 }
-
-
