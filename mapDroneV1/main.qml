@@ -93,12 +93,12 @@ Window {
 
 
         //this has to be changes
-//        MapPolyline {
-//            id: dronePath
-//            line.width: 5
-//            line.color: "red"
-//            path: coordinatePoints
-//        }
+        MapPolyline {
+            id: dronePath
+            line.width: 5
+            line.color: "red"
+            path: displayPolygonPoints
+        }
 
 
         //Polygon Marker
@@ -197,16 +197,16 @@ Window {
         }
 
         MapQuickItem{
+            id: _droneIcon
             coordinate: _droneData.droneLocation
-            anchorPoint.x: _point7.width/2
-            anchorPoint.y: _point7.height/2
+            anchorPoint.x: _doneIconImage.width/2
+            anchorPoint.y: _doneIconImage.height/2
 
-            sourceItem: Rectangle{
-                id: _point7
-                width: 20
-                height: 20
-                color: "yellow"
-                radius: 4
+            sourceItem: Image {
+                id: _doneIconImage
+                source: "file:///C:/Users/Ameer/OneDrive - aus.co.in/Documents/Qt_projects/qt_software_projects/qt_software_projects/mapV1/resources/drone_icon.webp"
+                width: 35
+                height: 35
             }
         }
     }

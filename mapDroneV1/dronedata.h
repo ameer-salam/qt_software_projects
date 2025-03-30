@@ -55,10 +55,12 @@ public:
         }
     }
 
+    int count = 0;
 
 signals:
     void buttonShowChanged(); //to display the button
     void droneLocationChanged();
+    void newLineChanged();
 
 public slots:
 

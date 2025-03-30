@@ -1,6 +1,7 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include "dronedata.h"
+#include <QTimer>
 
 int main(int argc, char *argv[])
 {

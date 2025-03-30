@@ -1,9 +1,12 @@
 #include "dronedata.h"
 #include <QDebug>
+#include <QTimer>
 
 DroneData::DroneData(QObject *parent) : QObject(parent), firstGeoClick(false)
 {
 }
+
+
 
 void DroneData::getCoorFunction(QGeoCoordinate coord)
 {
@@ -51,6 +54,16 @@ void DroneData::setButtonShow(bool state)
 }
 
 void DroneData::missionStart(){
-    qDebug()<<"Start of the Mission";
-    setDroneLocation(bottomRight);
+    //qDebug()<<"Start of the Mission";
+    //setDroneLocation(hexagonCoord[count]);
+    if(DroneData::count>6)
+    {
+        qDebug()<<"Done Moved completely!";
+                  return;
+    }
+
+    setDroneLocation(hexagonCoord[count]);
+    DroneData::count += 1;
+
+    QTimer::singleShot(1500, [this]() { missionStart(); });
 }
