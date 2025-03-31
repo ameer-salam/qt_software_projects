@@ -30,14 +30,11 @@ Window {
     DroneData {
         id: _droneData
         onDroneLocationChanged: {
-            onDroneLocationChanged: {
-                var updatedPath = displayPolygonPoints.slice(); // Copy existing points
-                updatedPath.push(_droneData.droneLocation); // Add new coordinate
-                displayPolygonPoints = updatedPath; // Assign new array to trigger UI update
-            }
-
+              console.log(_droneData.droneLocation);
+            var extraPoint = _droneData.droneLocation;
+              displayPolygonPoints.push(extraPoint);
+            droneTravelledPath.path = displayPolygonPoints;
         }
-
     }
 
 
@@ -67,7 +64,21 @@ Window {
             id: dronePath
             line.width: 5
             line.color: "red"
-            path: displayPolygonPoints
+            path: coordinatePoints
+        }
+
+
+        MapPolyline {
+            id: droneTravelledPath
+            line.width: 5
+            line.color: "blue"
+            path: [
+                {latitude: 0, longitude: 0},
+                {latitude: 0, longitude: 0},
+                {latitude: 0, longitude: 0},
+                {latitude: 0, longitude: 0},
+                {latitude: 0, longitude: 0},
+                {latitude: 0, longitude: 0}]
         }
 
         //To show my home
@@ -120,7 +131,7 @@ Window {
 
             sourceItem: Image {
                 id: _sHomeImage2
-                source: "file:///C:/Users/Ameer/OneDrive - aus.co.in/Documents/Qt_projects/qt_software_projects/qt_software_projects/mapV1/resources/DonrHomeMarker.png"
+                source: "file:///C:/Users/Ameer/OneDrive - aus.co.in/Documents/Qt_projects/qt_software_projects/qt_software_projects/mapV1/resources/Home_icon_brown.webp"
                 width: 35
                 height: 35
             }
@@ -136,7 +147,7 @@ Window {
                 id: _point1
                 width: 10
                 height: 10
-                color: "red"
+                color: "yellow"
                 radius: 4
             }
         }
@@ -149,7 +160,7 @@ Window {
                 id: _point2
                 width: 10
                 height: 10
-                color: "red"
+                color: "yellow"
                 radius: 4
             }
         }
@@ -162,7 +173,7 @@ Window {
                 id: _point3
                 width: 10
                 height: 10
-                color: "red"
+                color: "yellow"
                 radius: 4
             }
         }
@@ -175,7 +186,7 @@ Window {
                 id: _point4
                 width: 10
                 height: 10
-                color: "red"
+                color: "yellow"
                 radius: 4
             }
         }
@@ -188,7 +199,7 @@ Window {
                 id: _point5
                 width: 10
                 height: 10
-                color: "red"
+                color: "yellow"
                 radius: 4
             }
         }
@@ -201,7 +212,7 @@ Window {
                 id: _point6
                 width: 10
                 height: 10
-                color: "red"
+                color: "yellow"
                 radius: 4
             }
         }
