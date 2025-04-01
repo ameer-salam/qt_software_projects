@@ -72,13 +72,7 @@ Window {
             id: droneTravelledPath
             line.width: 5
             line.color: "blue"
-            path: [
-                {latitude: 0, longitude: 0},
-                {latitude: 0, longitude: 0},
-                {latitude: 0, longitude: 0},
-                {latitude: 0, longitude: 0},
-                {latitude: 0, longitude: 0},
-                {latitude: 0, longitude: 0}]
+            path: droneTravelledPath
         }
 
         //To show my home
