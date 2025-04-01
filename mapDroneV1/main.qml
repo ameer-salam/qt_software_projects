@@ -12,6 +12,7 @@ Window {
     id: _mainUIWindow
 
     property var coordinatePoints : [] ;
+    property var dronePath1: [coord1];
     property var displayPolygonPoints : [coord1] ;
     property var centerPoint : QtPositioning.coordinate(13.328353, 77.080545);
     property var coord1;
@@ -30,10 +31,13 @@ Window {
     DroneData {
         id: _droneData
         onDroneLocationChanged: {
-              console.log(_droneData.droneLocation);
-            var extraPoint = _droneData.droneLocation;
-              displayPolygonPoints.push(extraPoint);
+            console.log("Drones position is : " + _droneData.droneLocation);
+            //var extraPoint = _droneData.droneLocation;
+            displayPolygonPoints.push( _droneData.droneLocation);
+            dronePath1.push(_droneData.droneLocation);
+            console.log("The List is : " + displayPolygonPoints);
             droneTravelledPath.path = displayPolygonPoints;
+           //displayPolygonPoints.push(displayPolygonPoints);
         }
     }
 
@@ -72,7 +76,7 @@ Window {
             id: droneTravelledPath
             line.width: 5
             line.color: "blue"
-            path: droneTravelledPath
+            path: dronePath1
         }
 
         //To show my home
