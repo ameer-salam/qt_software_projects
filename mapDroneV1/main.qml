@@ -12,8 +12,6 @@ Window {
     id: _mainUIWindow
 
     property var coordinatePoints : [] ;
-    property var dronePath1: [coord1];
-    property var displayPolygonPoints : [coord1] ;
     property var centerPoint : QtPositioning.coordinate(13.328353, 77.080545);
     property var coord1;
     property var coord2;
@@ -30,16 +28,22 @@ Window {
 
     DroneData {
         id: _droneData
+
         onDroneLocationChanged: {
-            console.log("Drones position is : " + _droneData.droneLocation);
-            //var extraPoint = _droneData.droneLocation;
-            displayPolygonPoints.push( _droneData.droneLocation);
-            dronePath1.push(_droneData.droneLocation);
-            console.log("The List is : " + displayPolygonPoints);
-            droneTravelledPath.path = displayPolygonPoints;
-           //displayPolygonPoints.push(displayPolygonPoints);
+            var newCoord = QtPositioning.coordinate(_droneData.droneLocation.latitude, _droneData.droneLocation.longitude);
+
+            if (droneTravelledPath.path.length === 0) {
+                // First point: initialize with the first location
+                droneTravelledPath.path = [newCoord];
+            } else {
+                // Append new coordinate dynamically
+                droneTravelledPath.path = droneTravelledPath.path.concat([newCoord]);
+            }
+
+            console.log("Updated Path:", droneTravelledPath.path);
         }
     }
+
 
 
     Plugin{
@@ -72,11 +76,25 @@ Window {
         }
 
 
+//        MapPolyline {
+//            id: droneTravelledPath
+//            line.width: 5
+//            line.color: "blue"
+//            path: /*displayPolygonPoints*/ [{ latitude : coord1.latitude,  longitude : coord1.longitude},
+//                { latitude: 0, longitude: 0 },
+//                { latitude: 0, longitude: 0 },
+//                { latitude: 0, longitude: 0 },
+//                { latitude: 0, longitude: 0 },
+//                { latitude: 0, longitude: 0 },
+//                { latitude: 0, longitude: 0 }]
+//        }
+
+
         MapPolyline {
             id: droneTravelledPath
             line.width: 5
             line.color: "blue"
-            path: dronePath1
+            path: []
         }
 
         //To show my home
