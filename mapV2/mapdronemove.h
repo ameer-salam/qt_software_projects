@@ -88,7 +88,7 @@ public:
             emit droneLocationChanged();
         }
     }
-    Q_INVOKABLE void moveDrone(int);
+    Q_INVOKABLE void moveDrone(int, int);
 
 
 signals:

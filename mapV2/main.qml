@@ -48,6 +48,38 @@ Window {
         }
     }
 
+//    Slider{
+//        id: _distanceSlider
+//        visible: false
+//        parent: _mainMapArea
+//        maximumValue: 200
+//        minimumValue: 20
+//        stepSize: 10
+//        height : 150
+//        anchors.bottom: parent.bottom
+//        anchors.bottomMargin: 50
+//        anchors.left: parent.left
+//        anchors.leftMargin: 570
+//        orientation: Qt.Vertical
+//    }
+
+    SpinBox{
+        parent: _mainMapArea
+        id: _distanceSpinBox
+        visible: false
+        maximumValue: 200
+        minimumValue: 20
+        stepSize: 20
+        height: 50
+        width : 200
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 155
+        anchors.left: parent.left
+        anchors.leftMargin: 365
+        font.pixelSize: 40
+        value: 100
+    }
+
     Grid{
         id: _buttonGrid
         parent: _mainMapArea
@@ -65,34 +97,69 @@ Window {
             model: ["↖️", "⬆️", "↗️",
                     "⬅", "🔃", "➡️",
                     "↙️", "⬇️", "↘️"]
+
             Button{
                 text: modelData
                 width: 100
                 height: 100
-                onClicked: {
-                    if(text === "↖️")
-                        mapDroneMove.moveDrone(1);
-                    else if(text === "⬆️")
-                        mapDroneMove.moveDrone(2);
-                    else if(text === "↗️")
-                        mapDroneMove.moveDrone(3);
-                    else if(text === "⬅")
-                        mapDroneMove.moveDrone(4);
-                    else if(text === "🔃")
-                    {
-                        mapDroneMove.moveDrone(5);
-                        _dronePath.path = [homeLoc];
+
+                MouseArea{
+                    id: _mouseAreaforButton
+                    anchors.fill: parent
+                    property bool is_clickAndHold: false;
+
+                    Timer{
+                        id: _buttonHoldTimer
+                        interval: 300
+                        repeat: true
+
+                        onTriggered: {
+                            if(_mouseAreaforButton.is_clickAndHold == true)
+                                moveTheDrone();
+                            else
+                                _buttonHoldTimer.stop();
+                        }
                     }
-                    else if(text === "➡️")
-                        mapDroneMove.moveDrone(6);
-                    else if(text === "↙️")
-                        mapDroneMove.moveDrone(7);
-                    else if(text === "⬇️")
-                        mapDroneMove.moveDrone(8);
-                    else
-                        mapDroneMove.moveDrone(9);
-                    centerPoint = droneCoordinate;
+
+                    onPressed:{
+                        is_clickAndHold = true;
+                        moveTheDrone();
+                        _buttonHoldTimer.start();
+                    }
+
+                    onReleased:{
+                        _mouseAreaforButton.is_clickAndHold = false
+                        _buttonHoldTimer.stop();
+                    }
                 }
+
+                    function moveTheDrone(){
+                            var distance = _distanceSpinBox.value //to get the distance to move
+
+                            if(text === "↖️")
+                                mapDroneMove.moveDrone(distance, 315);
+                            else if(text === "⬆️")
+                                mapDroneMove.moveDrone(distance, 0);
+                            else if(text === "↗️")
+                                mapDroneMove.moveDrone(distance, 45);
+                            else if(text === "⬅")
+                                mapDroneMove.moveDrone(distance, 270);
+                            else if(text === "🔃")
+                            {
+                                //mapDroneMove.moveDrone(5);
+                                mapDroneMove.droneLocation = homeLoc;
+                                _dronePath.path = [homeLoc];
+                            }
+                            else if(text === "➡️")
+                                mapDroneMove.moveDrone(distance, 90);
+                            else if(text === "↙️")
+                                mapDroneMove.moveDrone(distance, 215);
+                            else if(text === "⬇️")
+                                mapDroneMove.moveDrone(distance, 180);
+                            else
+                                mapDroneMove.moveDrone(distance, 135);
+                            centerPoint = droneCoordinate;
+                        }
             }
         }
     }
@@ -155,6 +222,10 @@ Window {
                 height: 35
             }
         }
+
+        Repeater{
+            model: dro
+        }
     }
 
 
@@ -175,11 +246,14 @@ Window {
             {
                 _armStateButton.text = "Arm the Drone"
                 _buttonGrid.visible = false;
+                _distanceSpinBox.visible = false;
+
             }
             else
             {
                 _armStateButton.text = "Disarm the Drone"
                 _buttonGrid.visible = true;
+                _distanceSpinBox.visible = true;
             }
         }
     }

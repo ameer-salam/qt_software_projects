@@ -61,7 +61,7 @@ static const uint qt_meta_data_mapDroneMove[] = {
        0,       // classname
        0,    0, // classinfo
        7,   14, // methods
-       4,   62, // properties
+       4,   64, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
@@ -76,7 +76,7 @@ static const uint qt_meta_data_mapDroneMove[] = {
  // methods: name, argc, parameters, tag, flags
        6,    1,   53,    2, 0x02 /* Public */,
        8,    1,   56,    2, 0x02 /* Public */,
-       9,    1,   59,    2, 0x02 /* Public */,
+       9,    2,   59,    2, 0x02 /* Public */,
 
  // signals: parameters
     QMetaType::Void,
@@ -87,7 +87,7 @@ static const uint qt_meta_data_mapDroneMove[] = {
  // methods: parameters
     QMetaType::Void, 0x80000000 | 7,    2,
     QMetaType::Void, QMetaType::Bool,    2,
-    QMetaType::Void, QMetaType::Int,    2,
+    QMetaType::Void, QMetaType::Int, QMetaType::Int,    2,    2,
 
  // properties: name, type, flags
       10, 0x80000000 | 7, 0x0049510b,
@@ -116,7 +116,7 @@ void mapDroneMove::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         case 3: _t->droneLocationChanged(); break;
         case 4: _t->clickOnMap((*reinterpret_cast< QGeoCoordinate(*)>(_a[1]))); break;
         case 5: _t->armButtonPressed((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 6: _t->moveDrone((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 6: _t->moveDrone((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
