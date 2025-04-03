@@ -1,31 +1,38 @@
 import QtQuick 2.5
 import QtQuick.Window 2.2
-import QtQuick.Controls 1.0
 
+import QtPositioning 5.3
 import QtLocation 5.6
-import QtPositioning 5.6
+import QtQuick.Controls 1.0
 
 import mapDroneMove 1.0
 
-
 Window {
-    id: _mapwindow
+
+    property var centerPoint: mapDroneMove.homeLocationCoordinate
+    property var  homeLoc: mapDroneMove.homeLocationCoordinate
+    property var isHomeSet: mapDroneMove.homeSet
+    property var  droneCoordinate: mapDroneMove.droneLocation
+
+    id: _mainWindow
     visible: true
     visibility: Window.Maximized
     minimumHeight: 400
     minimumWidth: 600
-    title: "Drone Movemennt Qt_Task-2"
+    title: "Map project V2"
 
     MapDroneMove{
         id: mapDroneMove
+
+        onDroneLocationChanged: {
+            var newCoord = QtPositioning.coordinate(mapDroneMove.droneLocation.latitude, mapDroneMove.droneLocation.longitude);
+
+            if(_dronePath.path.length === 0)
+                _dronePath.path = [newCoord];
+            else
+                _dronePath.path = _dronePath.path.concat([newCoord]);
+        }
     }
-
-    //variables
-    property var centerPoint: QtPositioning.coordinate(13.328353, 77.080545);
-    property var clickedPoint;
-    property var homeLocationOnMap: mapDroneMove.homeLocation
-    property var droneLiveLocation;
-
 
     Plugin{
         id: mapPlugin
@@ -41,74 +48,139 @@ Window {
         }
     }
 
-    Map{
-        id: _mainMainArea
-        plugin: mapPlugin
-        zoomLevel: 16
-        anchors.fill: parent
-        center: centerPoint
+    Grid{
+        id: _buttonGrid
+        parent: _mainMapArea
+        visible: false
+        rows: 3
+        columns: 3
+        spacing: 5
+        anchors.left: parent.left
+        anchors.leftMargin: 50
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 50
 
-
-        MouseArea{
-            id: _mouseAreaOnMainMap
-            anchors.fill:parent
-            onClicked: {
-                clickedPoint = _mainMainArea.toCoordinate(Qt.point(mouse.x, mouse.y));
-                //console.log("Clicked on : " + clickedPoint);
-                mapDroneMove.getCoordinate(clickedPoint);
-                centerPoint= mapDroneMove.homeLocation;
-            }
-
-        }
-
-
-        MapQuickItem{
-            id: _droneIcon
-            visible: mapDroneMove.home
-            anchorPoint.x: droneImage.width/2
-            anchorPoint.y: droneImage.height/2 //change to drone location
-            coordinate: droneLiveLocation
-            sourceItem: Image{
-                id: droneImage
-                width: 40
-                height: 40
-                source: "file:///C:/Users/Ameer/OneDrive - aus.co.in/Documents/Qt_projects/qt_software_projects/qt_software_projects/mapV2/icons/droneImage.png"
-            }
-        }
-
-        MapQuickItem{
-            id: _homeLocation
-            visible: mapDroneMove.home
-            anchorPoint.x : homeImage.width/2
-            anchorPoint.y : homeImage.height/2
-            coordinate: mapDroneMove.homeLocation
-            sourceItem: Image{
-                id: homeImage
-                source: "file:///C:/Users/Ameer/OneDrive - aus.co.in/Documents/Qt_projects/qt_software_projects/qt_software_projects/mapV1/resources/drone_icon_1.webp"
-                width: 35
-                height: 35
-
-            }
-        }
-
-        Button{
-            id: _armingButton
-            visible: mapDroneMove.home
-            text: "Arm the  Drone"
-            width: 300
-            height: 100
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin: 50
-            anchors.left: parent.left
-            anchors.leftMargin: 50
-            onClicked: {
-                if(mapDroneMove.droneArmed === false)
-                {
-                    //mapDroneMove.setDroneArmed(true);
-                    _armingButton.text= "Disarm the drone";
+        Repeater{
+            id: _buttonSection
+            model: ["↖️", "⬆️", "↗️",
+                    "⬅", "🔃", "➡️",
+                    "↙️", "⬇️", "↘️"]
+            Button{
+                text: modelData
+                width: 100
+                height: 100
+                onClicked: {
+                    if(text === "↖️")
+                        mapDroneMove.moveDrone(1);
+                    else if(text === "⬆️")
+                        mapDroneMove.moveDrone(2);
+                    else if(text === "↗️")
+                        mapDroneMove.moveDrone(3);
+                    else if(text === "⬅")
+                        mapDroneMove.moveDrone(4);
+                    else if(text === "🔃")
+                    {
+                        mapDroneMove.moveDrone(5);
+                        _dronePath.path = [homeLoc];
+                    }
+                    else if(text === "➡️")
+                        mapDroneMove.moveDrone(6);
+                    else if(text === "↙️")
+                        mapDroneMove.moveDrone(7);
+                    else if(text === "⬇️")
+                        mapDroneMove.moveDrone(8);
+                    else
+                        mapDroneMove.moveDrone(9);
+                    centerPoint = droneCoordinate;
                 }
             }
         }
     }
 
+    Map{
+        id: _mainMapArea
+        anchors.fill: parent
+        plugin: mapPlugin
+        center: centerPoint
+        zoomLevel: 16
+
+        MouseArea{
+            id: _mainMouseArea
+            anchors.fill: parent
+            onClicked: {
+                var clickedCoord = _mainMapArea.toCoordinate(Qt.point(mouse.x, mouse.y));
+                mapDroneMove.clickOnMap(clickedCoord);
+
+                if(mapDroneMove.homeSet == true)
+                {
+                    _homeMarker.visible = true;
+                }
+            }
+        }
+
+        MapPolyline{
+            id: _dronePath
+            line.width: 5
+            line.color: "red"
+            path: []
+        }
+
+        //To show drone home
+        MapQuickItem{
+            visible: false
+            id: _homeMarker
+            coordinate: homeLoc
+            anchorPoint.x: _homeImage.width/2
+            anchorPoint.y: _homeImage.height/2
+
+            sourceItem:  Image {
+                id: _homeImage
+                source: "file:///C:/Users/Ameer/OneDrive - aus.co.in/Documents/Qt_projects/qt_software_projects/qt_software_projects/mapV1/resources/drone_icon_1.webp"
+                width: 35
+                height: 35
+            }
+        }
+
+        //drone icon
+        MapQuickItem{
+            id: _droneIcon
+            coordinate: droneCoordinate
+            anchorPoint.x: _doneIconImage.width/2
+            anchorPoint.y: _doneIconImage.height/2
+
+            sourceItem: Image {
+                id: _doneIconImage
+                source: "file:///C:/Users/Ameer/OneDrive - aus.co.in/Documents/Qt_projects/qt_software_projects/qt_software_projects/mapV1/resources/drone_icon.webp"
+                width: 35
+                height: 35
+            }
+        }
+    }
+
+
+    Button{
+        id: _armStateButton
+        parent: Window
+        visible: isHomeSet
+        text : "Arm the Drone"
+        width: 200
+        height: 100
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 50
+        anchors.left: parent.left
+        anchors.leftMargin: 365
+        onClicked: {
+            mapDroneMove.armButtonPressed(true);
+            if(mapDroneMove.armState == false)
+            {
+                _armStateButton.text = "Arm the Drone"
+                _buttonGrid.visible = false;
+            }
+            else
+            {
+                _armStateButton.text = "Disarm the Drone"
+                _buttonGrid.visible = true;
+            }
+        }
+    }
 }

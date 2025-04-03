@@ -3,80 +3,107 @@
 
 #include <QObject>
 #include <QGeoCoordinate>
-#include <QDebug>
 
-class MapDroneMove : public QObject
+class mapDroneMove : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(bool home READ home WRITE setHome NOTIFY homeChanged)
-    Q_PROPERTY(QGeoCoordinate homeLocation READ homeLocation WRITE setHomeLocation NOTIFY homeLocationChanged)
-    Q_PROPERTY(bool droneArmed READ droneArmed WRITE setDroneArmed NOTIFY droneArmedChanged)
+    Q_PROPERTY(QGeoCoordinate homeLocationCoordinate READ homeLocationCoordinate WRITE setHomeLocationCoordinate NOTIFY homeLocationCoordinateChanged)
+    Q_PROPERTY(bool homeSet READ homeSet WRITE setHomeSet NOTIFY homeSetChanged)
+    Q_PROPERTY(bool armState READ armState WRITE setArmState NOTIFY armStateChanged)
+    Q_PROPERTY(QGeoCoordinate droneLocation READ droneLocation WRITE setDroneLocation NOTIFY droneLocationChanged)
+
 public:
-    explicit MapDroneMove(QObject *parent = nullptr);
-    Q_INVOKABLE void getCoordinate(QGeoCoordinate);
-    Q_INVOKABLE QGeoCoordinate ArmAndStart();
+    explicit mapDroneMove(QObject *parent = nullptr);
 
-
-
-    //Q_PROPERTY - Home
-    bool home()
+    //related to getting the home coordinate
+    QGeoCoordinate homeLocationCoordinate()
     {
-        return home_set;
-    }
-    void setHome(bool homeSet)
-    {
-        if(home_set != homeSet){
-            home_set = homeSet;
-            qDebug()<<"Drone arm state changed";
-            emit homeChanged();
-        }
+        return homeLocation;
     }
 
-
-    //home posotion
-    QGeoCoordinate homeLocation()
+    void setHomeLocationCoordinate(QGeoCoordinate newHome)
     {
-        return home_location;
-    }
-    void setHomeLocation(QGeoCoordinate newLocation)
-    {
-        if(home_location != newLocation)
+        if(homeLocation != newHome)
         {
-            home_location = newLocation;
-            emit homeLocationChanged();
+            homeLocation = newHome;
+            setDroneLocation(homeLocation);
+            emit homeLocationCoordinateChanged();
         }
     }
 
 
-    //variables
+    //to get coordinates clicked
+    Q_INVOKABLE void clickOnMap(QGeoCoordinate);
 
 
-    //arming the drone
-    bool droneArmed()
+    //home set state
+    bool homeSet()
     {
-        return is_droneArmed;
+        return homeSetState;
     }
 
-    void setDroneArmed(bool armState)
+    void setHomeSet(bool state)
     {
-        if(is_droneArmed != armState)
+        if(homeSetState != state)
         {
-            is_droneArmed = armState;
-            emit droneArmedChanged();
+            homeSetState = state;
+            emit homeSetChanged();
         }
     }
+
+
+    //arm states of the drone
+    bool armState()
+    {
+        return droneArmed;
+    }
+
+    void setArmState(bool state)
+    {
+        if(droneArmed == false)
+        {
+            droneArmed = true;
+            emit armStateChanged();
+        }
+        else
+        {
+            droneArmed = false;
+            emit armStateChanged();
+        }
+    }
+
+    Q_INVOKABLE void armButtonPressed(bool);
+
+    //drone location
+    QGeoCoordinate droneLocation()
+    {
+        return previousDroneLocation;
+    }
+
+    void setDroneLocation(QGeoCoordinate locationChange)
+    {
+        if(previousDroneLocation != locationChange);
+        {
+            previousDroneLocation = locationChange;
+            emit droneLocationChanged();
+        }
+    }
+    Q_INVOKABLE void moveDrone(int);
+
 
 signals:
-    void homeChanged();
-    void homeLocationChanged();
-    void droneArmedChanged();
+    void homeLocationCoordinateChanged();
+    void homeSetChanged();
+    void armStateChanged();
+    void droneLocationChanged();
 
 public slots:
 
 private:
-    bool home_set;
-    bool is_droneArmed;
-    QGeoCoordinate home_location;
+    QGeoCoordinate homeLocation;
+    bool homeSetState;
+    bool droneArmed;
+    QGeoCoordinate previousDroneLocation;
 };
 
 #endif // MAPDRONEMOVE_H
