@@ -32,5 +32,11 @@ Window {
         visible: true
         anchors.fill: parent
         plugin: _mapPlugin
+        zoomLevel: 16
+    }
+
+    Button{
+        id: _loadLogFile
+
     }
 }
