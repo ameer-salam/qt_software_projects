@@ -68,6 +68,9 @@ private:
     //hexagonPoints
     //points start from bottom left and go clockwise to bottom right
     QGeoCoordinate bottomLeft, middleLeft, topLeft, topRight, middleRight, bottomRight; //b-bottom, t-top, r-right, l-left, m-middle
+    //use variables in such a way that tthier scope is limited to their fuinction itself
+    //for mem management
+
     QList<QGeoCoordinate> hexagonCoord;
 
     bool firstGeoClick;

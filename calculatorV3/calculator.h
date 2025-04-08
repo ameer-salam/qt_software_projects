@@ -24,7 +24,7 @@ signals:
 public slots:
 
 private:
-    QString OperatorAndOperand;
+    QString OperatorAndOperand; //suggestion: how can u specifice member variable van be bound //binding it with Q_PROPERTY //data bindinh in Qt
     int OperatorAndOperand_length;
 };
 

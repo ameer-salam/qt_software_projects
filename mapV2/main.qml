@@ -1,3 +1,11 @@
+//standards in var creation
+/*
+  camle case - var
+  cap letter - class
+  mem var - m_ prefix
+  const - all caps
+  */
+
 import QtQuick 2.5
 import QtQuick.Window 2.2
 
@@ -86,8 +94,11 @@ Window {
         visible: false
         rows: 3
         columns: 3
+        //learn more about column and row grid
         spacing: 5
-        anchors.left: parent.left
+        anchors.left: parent.left //learn more about anchors
+        //use grids and layouts
+        //learn layout management and layouts and diff types
         anchors.leftMargin: 50
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 50
@@ -136,6 +147,9 @@ Window {
                     function moveTheDrone(){
                             var distance = _distanceSpinBox.value //to get the distance to move
 
+                            //rotate the drone direction
+                        //identity the nose direction
+                        //change the movemenet by taking nose dire of the drone
                             if(text === "↖️")
                                 mapDroneMove.moveDrone(distance, 315);
                             else if(text === "⬆️")

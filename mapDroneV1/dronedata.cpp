@@ -13,8 +13,8 @@ void DroneData::getCoorFunction(QGeoCoordinate coord)
     qDebug()<<"The coordinates obtaines are : Latitude = "<<coord.latitude()<<"  longitude = "<<coord.longitude();
     if(DroneData::firstGeoClick == false)
     {
-        DroneData::setButtonShow(true);
-        DroneData::home = coord;
+        setButtonShow(true);
+        home = coord;
         qDebug()<<"Home has been Set!";
         createHexagon(home);
     }
@@ -27,7 +27,7 @@ void DroneData::createHexagon(QGeoCoordinate firstPoint)
     DroneData::topLeft = middleLeft.atDistanceAndAzimuth(200, 330, 0);
     DroneData::topRight = topLeft.atDistanceAndAzimuth(200, 30, 0);
     DroneData::middleRight = topRight.atDistanceAndAzimuth(200, 90, 0);
-    DroneData::bottomRight = middleRight.atDistanceAndAzimuth(200, 150, 0);
+    bottomRight = middleRight.atDistanceAndAzimuth(200, 150, 0);
 
     hexagonCoord.append({bottomLeft, middleLeft, topLeft, topRight, middleRight,bottomRight,bottomLeft});
     //qDebug()<<"This : "<<hexagonCoord[0];
@@ -56,7 +56,7 @@ void DroneData::setButtonShow(bool state)
 void DroneData::missionStart(){
     //qDebug()<<"Start of the Mission";
     //setDroneLocation(hexagonCoord[count]);
-    if(DroneData::count>6)
+    if(DroneData::count>6) //here also take note to imporve the code and make it more fexblme
     {
         qDebug()<<"Done Moved completely!";
                   return;
@@ -66,4 +66,5 @@ void DroneData::missionStart(){
     DroneData::count += 1;
 
     QTimer::singleShot(1500, [this]() { missionStart(); });
+    //diff bw QTimer and singleShot
 }

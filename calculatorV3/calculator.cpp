@@ -9,11 +9,12 @@ Calculator::Calculator(QObject *parent) : QObject(parent), OperatorAndOperand(""
 void Calculator::buttonClicked(QChar text)
 {
     if (text.isDigit()) {
-        OperatorAndOperand += text;
+        OperatorAndOperand += text; //suggestion: append function can be used
     } else {
-        OperatorAndOperand += " " + QString(text) + " ";
+        OperatorAndOperand += " " + QString(text) + " "; //suggestion: append usage
     }
     setDisplayText(OperatorAndOperand);
+    //suggestion: emit for the textDisplay can be added here directly
 }
 
 
@@ -28,13 +29,13 @@ void Calculator::equalsPressed()
     QStringList tokens = OperatorAndOperand.split(" ", QString::SkipEmptyParts);
     qDebug() << "Parsed tokens: " << tokens;
 
-    if (tokens.size() < 3) return;
-
+    if (tokens.size() < 3) return; //two opearator and 1 operand
+    // [1+3-4/]
     double result = tokens[0].toDouble();
     for (int i = 1; i < tokens.size(); i += 2)
     {
         QString op = tokens[i];
-        double num = tokens[i + 1].toDouble();
+        double num = tokens[i + 1].toDouble(); //what if index goes beyond the size
 
         if (op == "+") result += num;
         else if (op == "-") result -= num;
@@ -46,8 +47,13 @@ void Calculator::equalsPressed()
         }
     }
 
+    //handle the no opearator in the end ex: 1+5/
+    //not to access index without size check
+
+
     setDisplayText(QString::number(result));
     OperatorAndOperand=""; //this so that the next time i click a button 0 is taken back on textArrea again
+    //use clear everywhere
 }
 
 
@@ -55,9 +61,11 @@ void Calculator::equalsPressed()
 
 void Calculator::clearPressed()
 {
-    OperatorAndOperand="";
+
+    OperatorAndOperand=""; //qString::clear this can be used
     qDebug()<<"String Cleared";
-    setDisplayText("");
+    setDisplayText(""); //suggestion: hoe can specifice member variable van be bound
+
 }
 
 QString Calculator::displayText() const
@@ -73,5 +81,7 @@ void Calculator::setDisplayText(const QString &recieved)
     //{
         OperatorAndOperand = recieved;
         emit displayTextChanged();
+
+        //suggestion: the emit can be directly put into the
     //}
 }

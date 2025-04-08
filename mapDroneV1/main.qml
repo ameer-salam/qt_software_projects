@@ -18,7 +18,7 @@ Window {
     property var coord3;
     property var coord4;
     property var coord5;
-    property var coord6;
+    property var coord6; //instead of declaring these var in the place where the are being adssigned
 
     visible: true
     minimumHeight: 400
@@ -154,6 +154,7 @@ Window {
         }
 
         //points display
+        //use ways to short and help scale the code
         MapQuickItem{
             coordinate: coord1
             anchorPoint.x: _point1.width/2
@@ -219,6 +220,7 @@ Window {
                 radius: 4
             }
         }
+
         MapQuickItem{
             coordinate: coord6
             anchorPoint.x: _point6.width/2
@@ -242,6 +244,8 @@ Window {
             sourceItem: Image {
                 id: _doneIconImage
                 source: "file:///C:/Users/Ameer/OneDrive - aus.co.in/Documents/Qt_projects/qt_software_projects/qt_software_projects/mapV1/resources/drone_icon.webp"
+                //instaead the source embed the itmn in the project
+                //embedding items into project
                 width: 35
                 height: 35
             }
@@ -270,7 +274,10 @@ Window {
             console.log(coordinatePoints);
             centerPoint = coordinatePoints[0]; //aligns the map to the centerpoint
 
+
+            //change the entire logic in order to take point no and generate points accordingly
             //allocate the points
+            //look into the dynamic variable/representation of these variables
             coord1 = coordinatePoints[0];
             coord2 = coordinatePoints[1];
             coord3 = coordinatePoints[2];
