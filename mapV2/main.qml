@@ -13,7 +13,7 @@ import QtPositioning 5.3
 import QtLocation 5.6
 import QtQuick.Controls 1.0
 
-import mapDroneMove 1.0
+//import mapDroneMove 1.0
 
 Window {
 
@@ -29,8 +29,8 @@ Window {
     minimumWidth: 600
     title: "Map project V2"
 
-    MapDroneMove{
-        id: mapDroneMove
+    Connections{
+        target: mapDroneMove
 
         onDroneLocationChanged: {
             var newCoord = QtPositioning.coordinate(mapDroneMove.droneLocation.latitude, mapDroneMove.droneLocation.longitude);
