@@ -1,7 +1,7 @@
 import QtQuick 2.5
 import QtQuick.Window 2.2
 import QtQuick.Controls 1.0
-import calculator 1.0
+//import calculator 1.0
 
 Window {
     visible: true
@@ -12,9 +12,9 @@ Window {
     title: "CalculatorV3 - with String and QProperty"
     color: "grey"
 
-    Calculator{
-        id: calculator
-        onDisplayTextChanged: {
+    Connections{
+        target: calculator
+        onDisplayTextChanged:{
             _textArea.text = calculator.displayText;
         }
     }

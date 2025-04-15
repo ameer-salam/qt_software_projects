@@ -9,11 +9,12 @@ Calculator::Calculator(QObject *parent) : QObject(parent), OperatorAndOperand(""
 void Calculator::buttonClicked(QChar text)
 {
     if (text.isDigit()) {
-        OperatorAndOperand += text; //suggestion: append function can be used
+        OperatorAndOperand.append(text); //DONE :suggestion: append function can be used
     } else {
-        OperatorAndOperand += " " + QString(text) + " "; //suggestion: append usage
+        OperatorAndOperand.append(" " + QString(text) + " "); //DONE :suggestion: append usage
     }
-    setDisplayText(OperatorAndOperand);
+    //setDisplayText(OperatorAndOperand); DONE :
+    emit displayTextChanged();
     //suggestion: emit for the textDisplay can be added here directly
 }
 
@@ -29,13 +30,26 @@ void Calculator::equalsPressed()
     QStringList tokens = OperatorAndOperand.split(" ", QString::SkipEmptyParts);
     qDebug() << "Parsed tokens: " << tokens;
 
-    if (tokens.size() < 3) return; //two opearator and 1 operand
+    if (tokens.size() < 3) return; //two opearator and 1 operand DONE -
     // [1+3-4/]
+
+
     double result = tokens[0].toDouble();
     for (int i = 1; i < tokens.size(); i += 2)
     {
+        bool status;
         QString op = tokens[i];
-        double num = tokens[i + 1].toDouble(); //what if index goes beyond the size
+
+        QString lastItem = tokens.last();
+        if(lastItem == "+" || lastItem == "-"  || lastItem == "*" || lastItem == "/")
+        {
+            setDisplayText("0");
+            return;
+        }
+        //qDebug()<<"i size : "<<i<<"toekn size : "<<tokens.size();
+        double num = tokens[i + 1].toDouble(&status); //DONE - what if index goes beyond the size
+
+        qDebug()<<status;
 
         if (op == "+") result += num;
         else if (op == "-") result -= num;
@@ -47,13 +61,13 @@ void Calculator::equalsPressed()
         }
     }
 
-    //handle the no opearator in the end ex: 1+5/
+    //DONE - handle the no opearator in the end ex: 1+5/
     //not to access index without size check
 
 
     setDisplayText(QString::number(result));
-    OperatorAndOperand=""; //this so that the next time i click a button 0 is taken back on textArrea again
-    //use clear everywhere
+    OperatorAndOperand.clear(); //this so that the next time i click a button 0 is taken back on textArrea again
+    //use clear everywhere DONE :
 }
 
 
@@ -62,9 +76,10 @@ void Calculator::equalsPressed()
 void Calculator::clearPressed()
 {
 
-    OperatorAndOperand=""; //qString::clear this can be used
+    OperatorAndOperand.clear(); //qString::clear this can be used
     qDebug()<<"String Cleared";
-    setDisplayText(""); //suggestion: hoe can specifice member variable van be bound
+    emit displayTextChanged();
+    //setDisplayText(""); //suggestion: hoe can specifice member variable van be bound
 
 }
 
