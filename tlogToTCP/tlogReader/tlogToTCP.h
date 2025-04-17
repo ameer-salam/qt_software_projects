@@ -15,6 +15,8 @@ This is me learnign to write the libraries for Cpp language
         - loaded only when called once and then can be shared among other componets 
 */
 
+void helloWords();
+
 class tlogToTCP{
 
     public:
