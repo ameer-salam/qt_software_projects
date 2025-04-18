@@ -1,12 +1,13 @@
 #include<iostream>
-#include "C:\Users\Ameer\OneDrive - aus.co.in\Documents\Qt_projects\qt_software_projects\qt_software_projects\learningMakefile\exampleClass.h"
+#include "exampleClass.h"
 
 using namespace std;
 
 int main()
 {
-    ExampleClass example;
-    cout<<"In main code!\n";
-    example.messageFunction();
+    ExampleClass exampleClass;
+    cout<<"in the main code!"<<endl;
+    exampleClass.ExampleClass_Function();
+    cout<<"The number from the headerclass is : "<<exampleClass.ExampleClass_Function_number();
     return 0;
 }

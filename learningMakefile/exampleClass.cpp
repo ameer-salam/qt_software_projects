@@ -3,7 +3,14 @@
 
 using namespace std;
 
-void ExampleClass::messageFunction()
+void ExampleClass::ExampleClass_Function()
 {
-    cout<<"Here I am in the exampleClass!\n";
+    cout<<"This message is from the ExampleClass!"<<endl;
 }
+
+int ExampleClass::ExampleClass_Function_number()
+{
+    return i;
+}
+
+
