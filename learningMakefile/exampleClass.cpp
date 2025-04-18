@@ -10,7 +10,7 @@ void ExampleClass::ExampleClass_Function()
 
 int ExampleClass::ExampleClass_Function_number()
 {
-    return i;
+    return i*rand();
 }
 
 
