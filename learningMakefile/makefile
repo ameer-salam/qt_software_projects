@@ -1,15 +1,15 @@
-CXX  = g++
-CFLAGS = -Wall -Os -c
-
-#check if the main.o and exampleClass.o exist and if yes then generate executable
+CXX := g++
+CXXFLAGS_COMPILE := -Wall -Os -c
+CXXFLAGS_LINK := -Wall -Os
+MAIN := main.cpp
+EXAMPLECLASS := exampleClass.cpp
+EXAMPLECLASS_HEADER := exampleClass.h
 
 output: main.o exampleClass.o
-	$(CXX) main.o exampleClass.o -o output.exe
+	$(CXX) $(CXXFLAGS_LINK) main.o exampleClass.o -o output.exe
 
-#to generate the object file of main.cpp if main.cpp is changed
-main.o: main.cpp
-	$(CXX) $(CFLAGS) main.cpp -o main.o
+main.o: $(MAIN)
+	$(CXX) $(CXXFLAGS_COMPILE) $(MAIN) -o main.o
 
-exampleClass.o: exampleClass.cpp exampleClass.h
-	$(CXX) $(CFLAGS) exampleClass.cpp -o exampleClass.o
-
+exampleClass.o: $(EXAMPLECLASS) $(EXAMPLECLASS_HEADER)
+	$(CXX) $(CXXFLAGS_COMPILE) $(EXAMPLECLASS) -o exampleClass.o

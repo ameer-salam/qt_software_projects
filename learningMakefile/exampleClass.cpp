@@ -1,5 +1,5 @@
-#include "exampleClass.h"
 #include <iostream>
+#include "exampleClass.h"
 
 using namespace std;
 
