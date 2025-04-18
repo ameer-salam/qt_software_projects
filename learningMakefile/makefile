@@ -4,6 +4,7 @@ CXXFLAGS_LINK := -Wall -Os
 MAIN := main.cpp
 EXAMPLECLASS := exampleClass.cpp
 EXAMPLECLASS_HEADER := exampleClass.h
+#used the simply define variables
 
 output: main.o exampleClass.o
 	$(CXX) $(CXXFLAGS_LINK) main.o exampleClass.o -o output.exe
