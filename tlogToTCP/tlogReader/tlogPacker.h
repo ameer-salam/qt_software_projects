@@ -1,9 +1,9 @@
-#ifndef MAVLINKPARSER_H
-#define MAVLINKPARSER_H
+#ifndef TLOGPACKER_H
+#define TLOGPACEKR_H
 
 #include<string>
 
-class MavlinkParser{
+class TlogPacker{
     public:
         void getTlogFileLocation(std::string IPfile_addree);
 };

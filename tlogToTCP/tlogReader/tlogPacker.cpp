@@ -1,12 +1,12 @@
-#include "mavlinkParser.h"
-#include "C:\Users\Ameer\Downloads\c_library_v2-master\c_library_v2-master\ualberta\mavlink.h"
+#include "tlogPacker.h"
+//#include "C:\Users\Ameer\Downloads\c_library_v2-master\c_library_v2-master\ualberta\mavlink.h"
 #include <fstream>
 #include <istream>
 #include <iostream>
 
 using namespace std;
 
-void MavlinkParser::getTlogFileLocation(string IPFileAddress)
+void TlogPacker::getTlogFileLocation(string IPFileAddress)
 {
     ifstream InputFile(IPFileAddress, ios::binary); //opens the file as binary
     if(!InputFile.is_open())
@@ -17,8 +17,5 @@ void MavlinkParser::getTlogFileLocation(string IPFileAddress)
     else
     {
         cout<<"The file : " <<IPFileAddress<<"\t is open"<<endl;
-        char byte;
-
-        mavlink_message_t message;
     }
 }
