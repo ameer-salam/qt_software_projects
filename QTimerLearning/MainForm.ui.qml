@@ -1,17 +1,15 @@
 import QtQuick 2.5
-import QtQuick.Window 2.2
 
-Window {
-    visible: true
-    width: 640
-    height: 480
-    title: qsTr("Hello World")
+Rectangle {
+    property alias mouseArea: mouseArea
+    property alias textEdit: textEdit
+
+    width: 360
+    height: 360
 
     MouseArea {
+        id: mouseArea
         anchors.fill: parent
-        onClicked: {
-            console.log(qsTr('Clicked on background. Text: "' + textEdit.text + '"'))
-        }
     }
 
     TextEdit {
