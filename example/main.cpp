@@ -46,11 +46,11 @@ int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
     QMainWindow mainWindow;
-    QLabel *label = new QLabel();
+    QLabel *label = new QLabel(&mainWindow);
 
     label->setText("Hello!\n\tThis is Ameer Salam, an intern at Aereo and I am learning the Qt framework and more about it. And here I am trying to contribute to the company with my skills I am trying to learn");
     label->setFrameStyle(QFrame::Panel | QFrame::Raised);
-    label->setLineWidth(50);
+    label->setLineWidth(150);
     label->setAlignment(Qt::AlignLeft | Qt::AlignTop);
     label->setWordWrap(true);
     QFont font = label->font();
